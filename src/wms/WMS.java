@@ -28,12 +28,11 @@ public class WMS extends Application {
         buttons = new ArrayList<Button>();
         
     
-        // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kodeduplisere
-        
-        Button btn = createButton(100, 100,"Tekst",null); buttons.add(btn);
-        Button btn2 = createButton(400, 100,"Tekst",null); buttons.add(btn2);
-        Button btn3 = createButton(400, 300,"Tekst",null); buttons.add(btn3);
-        Button btn4 = createButton(100, 300,"Tekst",null); buttons.add(btn4);
+        // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
+        Button btn = createButton(100, 100,"Tekst",null, primaryStage); buttons.add(btn);
+        Button btn2 = createButton(400, 100,"Tekst",null,primaryStage); buttons.add(btn2);
+        Button btn3 = createButton(400, 300,"Tekst",null,primaryStage); buttons.add(btn3);
+        Button btn4 = createButton(100, 300,"Tekst",null,primaryStage); buttons.add(btn4);
        
         Pane root = new Pane();
 
@@ -58,7 +57,7 @@ public class WMS extends Application {
     
         // Lager en knapp med posisjon pixels int,int og String tekst, Og hvor knappen skal lede til null (scene). 
         
-    public Button createButton(int x, int y, String title, Scene scene) {
+    public Button createButton(int x, int y, String title, Scene scene, Stage primaryStage) {
         Button btn = new Button();
 
         btn.setText(title);
