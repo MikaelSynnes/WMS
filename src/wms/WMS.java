@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -34,12 +37,21 @@ public class WMS extends Application {
         Button btn3 = createButton(400, 300,"Tekst",null,primaryStage); buttons.add(btn3);
         Button btn4 = createButton(100, 300,"Tekst",null,primaryStage); buttons.add(btn4);
        
-        Pane root = new Pane();
+        GridPane root = new GridPane();
+        root.setAlignment(Pos.CENTER);
+
 
         for (Button b : buttons) {
-            root.getChildren().add(b);
+            root.setMargin(b, new Insets(20));
         }
+
+        root.add(btn, 0, 0);
+        root.add(btn2, 1, 0);
+        root.add(btn3, 0, 1);
+        root.add(btn4, 1, 1);
         Scene scene = new Scene(root, 800, 600);
+        root.setMinWidth(scene.getWidth());
+        root.setMinHeight(scene.getHeight());
 
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
