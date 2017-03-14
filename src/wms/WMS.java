@@ -37,7 +37,7 @@ public class WMS extends Application
         double minHeight;
 
         // Tittel
-        Label header = new Label("WMS");
+        Label header = new Label("WMS-System");
         header.setFont(new Font(40));
         header.setPadding(new Insets(20));
 
@@ -80,7 +80,7 @@ public class WMS extends Application
         root.add(btn4, 1, 2);
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("WMS");
+        primaryStage.setTitle("");
         primaryStage.setScene(scene);
         primaryStage.show();
         minWidth = primaryStage.getWidth();
