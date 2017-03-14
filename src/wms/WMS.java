@@ -23,14 +23,23 @@ import java.util.ArrayList;
 /**
  * @author Mikael
  */
-public class WMS extends Application
-{
+public class WMS extends Application {
 
+    GridPane root;
     ArrayList<Button> buttons;
+    Scene scene;
+
+    VBox headerBox;
+
+    public WMS() {
+        root = new GridPane();
+        scene = new Scene(root);
+        headerBox = new VBox();
+
+    }
 
     @Override
-    public void start(Stage primaryStage)
-    {
+    public void start(Stage primaryStage) {
         buttons = new ArrayList<Button>();
 
         double minWidth;
@@ -53,21 +62,16 @@ public class WMS extends Application
         Button btn4 = createButton("Ansatte", null, primaryStage);
         buttons.add(btn4);
 
-        for (Button currentButton : buttons)
-        {
+        for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
         }
 
-        GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);
 
-        VBox headerBox = new VBox();
         headerBox.getChildren().add(header);
         headerBox.setAlignment(Pos.CENTER);
 
-
-        for (Button b : buttons)
-        {
+        for (Button b : buttons) {
             root.setMargin(b, new Insets(20));
         }
 
@@ -78,7 +82,6 @@ public class WMS extends Application
         root.add(btn2, 1, 1);
         root.add(btn3, 0, 2);
         root.add(btn4, 1, 2);
-        Scene scene = new Scene(root);
 
         primaryStage.setTitle("WMS 2000");
         primaryStage.setScene(scene);
@@ -92,25 +95,19 @@ public class WMS extends Application
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 
-
     // Lager en knapp med posisjon pixels int,int og String tekst, Og hvor knappen skal lede til null (scene).
-
-    public Button createButton(String title, Scene scene, Stage primaryStage)
-    {
+    public Button createButton(String title, Scene scene, Stage primaryStage) {
         Button btn = new Button();
 
         btn.setText(title);
-        btn.setOnAction(new EventHandler<ActionEvent>()
-        {
+        btn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
-            public void handle(ActionEvent event)
-            {
+            public void handle(ActionEvent event) {
                 primaryStage.setScene(scene);
             }
         });
