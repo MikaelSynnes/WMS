@@ -14,9 +14,11 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -32,15 +34,22 @@ public class WMS extends Application
     {
         buttons = new ArrayList<Button>();
 
+        double minWidth;
+        double minHeight;
+
+        // Tittel
+        Label header = new Label("WMS");
+        header.setFont(new Font(20));
+        header.setPadding(new Insets(20));
 
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
-        Button btn = createButton("Tekst", null, primaryStage);
+        Button btn = createButton("Lageroversikt", null, primaryStage);
         buttons.add(btn);
-        Button btn2 = createButton("Tekst", null, primaryStage);
+        Button btn2 = createButton("Vareregistrering", null, primaryStage);
         buttons.add(btn2);
-        Button btn3 = createButton("Tekst", null, primaryStage);
+        Button btn3 = createButton("Truck", null, primaryStage);
         buttons.add(btn3);
-        Button btn4 = createButton("Tekst", null, primaryStage);
+        Button btn4 = createButton("Ansatte", null, primaryStage);
         buttons.add(btn4);
 
         GridPane root = new GridPane();
@@ -52,17 +61,21 @@ public class WMS extends Application
             root.setMargin(b, new Insets(20));
         }
 
-        root.add(btn, 0, 0);
-        root.add(btn2, 1, 0);
-        root.add(btn3, 0, 1);
-        root.add(btn4, 1, 1);
-        Scene scene = new Scene(root, 800, 600);
-        root.setMinWidth(scene.getWidth());
-        root.setMinHeight(scene.getHeight());
+        // Legg til header og knapper
+        root.add(header,0, 0);
+        root.add(btn, 0, 1);
+        root.add(btn2, 1, 1);
+        root.add(btn3, 0, 2);
+        root.add(btn4, 1, 2);
+        Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("WMS");
         primaryStage.setScene(scene);
         primaryStage.show();
+        minWidth = primaryStage.getWidth();
+        minHeight = primaryStage.getHeight();
+        primaryStage.setMinWidth(minWidth);
+        primaryStage.setMinHeight(minHeight);
     }
 
     /**
