@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -62,6 +63,10 @@ public class WMS extends Application
         GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);
 
+        VBox headerBox = new VBox();
+        headerBox.getChildren().add(header);
+        headerBox.setAlignment(Pos.CENTER);
+
 
         for (Button b : buttons)
         {
@@ -69,7 +74,8 @@ public class WMS extends Application
         }
 
         // Legg til header og knapper
-        root.add(header,0, 0);
+        root.add(headerBox,0, 0);
+        root.setColumnSpan(headerBox, 2);
         root.add(btn, 0, 1);
         root.add(btn2, 1, 1);
         root.add(btn3, 0, 2);
