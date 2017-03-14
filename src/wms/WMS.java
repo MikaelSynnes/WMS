@@ -5,8 +5,6 @@
  */
 package wms;
 
-import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,11 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 /**
  * @author Mikael
@@ -74,7 +72,7 @@ public class WMS extends Application
         }
 
         // Legg til header og knapper
-        root.add(headerBox,0, 0);
+        root.add(headerBox, 0, 0);
         root.setColumnSpan(headerBox, 2);
         root.add(btn, 0, 1);
         root.add(btn2, 1, 1);
