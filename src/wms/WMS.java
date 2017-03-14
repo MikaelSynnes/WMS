@@ -39,8 +39,10 @@ public class WMS extends Application
 
         // Tittel
         Label header = new Label("WMS");
-        header.setFont(new Font(20));
+        header.setFont(new Font(40));
         header.setPadding(new Insets(20));
+
+        Font buttonFont = new Font(20);
 
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
         Button btn = createButton("Lageroversikt", null, primaryStage);
@@ -51,6 +53,11 @@ public class WMS extends Application
         buttons.add(btn3);
         Button btn4 = createButton("Ansatte", null, primaryStage);
         buttons.add(btn4);
+
+        for (Button currentButton : buttons)
+        {
+            currentButton.setFont(buttonFont);
+        }
 
         GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);
