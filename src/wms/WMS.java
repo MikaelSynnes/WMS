@@ -80,7 +80,7 @@ public class WMS extends Application
         root.add(btn4, 1, 2);
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("");
+        primaryStage.setTitle("WMS 2000");
         primaryStage.setScene(scene);
         primaryStage.show();
         minWidth = primaryStage.getWidth();
