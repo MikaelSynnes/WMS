@@ -15,16 +15,16 @@ public class Vare {
     private final String plassering;
     private final String dato;
 
-    Vare(String vNummer, String bs, String tp, String ant, String pl, String dt) {
-        this.vareNummer = new String(vNummer);
-        this.beskrivelse = new String(bs);
-        this.type = new String(tp);
-        this.antall = new String(ant);
-        this.plassering = new String(pl);
-        this.dato = new String(dt);
+    public Vare(String vareNummer, String beskrivelse, String type, String antall, String plassering, String dato) {
+        this.vareNummer = vareNummer;
+        this.beskrivelse = beskrivelse;
+        this.type = type;
+        this.antall = antall;
+        this.plassering = plassering;
+        this.dato = dato;
     }
 
-    public String getVareNummer() {
+    public String getVarenummer() {
         return vareNummer;
     }
 
