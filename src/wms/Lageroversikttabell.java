@@ -74,12 +74,19 @@ public class Lageroversikttabell extends Application {
         table.setItems(data);
         table.getColumns().addAll(vareNummer, beskrivelse, type, antall, plassering, dato);
 
+        final Button tilbake = new Button("Tilbake");
+        tilbake.setOnAction((ActionEvent e) ->{
+
+        });
+        hb.getChildren().addAll(tilbake);
+
         final Button addButton = new Button("Add");
         addButton.setOnAction((ActionEvent e) ->{
             data.add(new Vare("X", "Y", "J", "i", "s", "o"));
         });
 
        hb.getChildren().addAll(addButton);
+
         hb.setSpacing(3);
 
         final VBox vbox = new VBox();
