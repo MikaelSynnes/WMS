@@ -6,29 +6,21 @@
 package wms;
 
 import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-
 
 /**
  *
  * @author Kristian
  */
-public class Header {
+public class Footer {
     private String title;
 
-
-    public Header(String title ) {
+    public Footer(String title) {
         this.title = title;
-        
-        
     }
     
-        public Label createHeader(){
-        Label header = new Label(title);
+    public Label createFooter(){
+        Label footer = new Label(title);
         
-        header.setFont(new Font(30));
-        
-        return header;
+        return footer;
     }
 }
