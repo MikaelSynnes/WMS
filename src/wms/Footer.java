@@ -21,6 +21,7 @@ public class Footer {
     public Label createFooter(){
         Label footer = new Label(title);
         
+        
         return footer;
     }
 }
