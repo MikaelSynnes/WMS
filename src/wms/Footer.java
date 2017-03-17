@@ -14,8 +14,8 @@ import javafx.scene.control.Label;
 public class Footer {
     private String title;
 
-    public Footer(String title) {
-        this.title = title;
+    public Footer() {
+        this.title = "This is a footer";
     }
     
     public Label createFooter(){

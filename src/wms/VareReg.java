@@ -82,11 +82,14 @@ public class VareReg extends Application {
         hb.getChildren().addAll(addButton);
         hb.setSpacing(3);*/
  
+        Footer foot = new Footer();
+        Label footer = foot.createFooter();
+        
         //VBox
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 10, 10, 10));
-        vbox.getChildren().addAll(header, table);
+        vbox.getChildren().addAll(header, table, footer);
  
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
         
