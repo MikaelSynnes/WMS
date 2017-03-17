@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ public class VareReg extends Application {
  
     private final TableView<Vare> table = new TableView<>();
     private final ObservableList<Vare> data =
-            FXCollections.observableArrayList(new Vare(1,1,1,"A", "B","C"));
+            FXCollections.observableArrayList(new Vare("1","3","2","A","B","C"));
     final HBox hb = new HBox();
  
     public static void main(String[] args) {
@@ -74,13 +75,21 @@ public class VareReg extends Application {
         table.getColumns().addAll(vareNummer, ordreNummer, antall, mottaker, plassering, dato);
  
         //button
-        /*final Button addButton = new Button("Add");
-        addButton.setOnAction((ActionEvent e) -> {
-            data.add(new Vare(2,2,2,"Y","Z","X"));
+        final Button saveButton = new Button("Lagre");
+        saveButton.setOnAction((ActionEvent e) -> {
+            data.add(new Vare("2","2","2","save","save","save"));
          });
+        
+        Button backButton = new Button("Tilbake");
+        backButton.setOnAction((ActionEvent b)->{
+            data.add(new Vare("2","4","5","tilbake","tilbake","tilbake"));
+        });
+        
+        
  
-        hb.getChildren().addAll(addButton);
-        hb.setSpacing(3);*/
+        hb.getChildren().addAll(saveButton, backButton);
+        hb.setAlignment(Pos.BASELINE_RIGHT);
+        hb.setSpacing(3);
  
         Footer foot = new Footer();
         Label footer = foot.createFooter();
@@ -89,7 +98,7 @@ public class VareReg extends Application {
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 10, 10, 10));
-        vbox.getChildren().addAll(header, table, footer);
+        vbox.getChildren().addAll(header, table, hb,footer);
  
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
         

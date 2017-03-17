@@ -10,43 +10,43 @@ package wms;
  * @author Kristian
  */
 public class Vare {
-    private int vareNummer;
-    private int ordreNummber;
-    private int antall;
+    private String vareNummer;
+    private String ordreNummber;
+    private String antall;
     private String mottaker;
-    private String Plassering;
+    private String plassering;
     private String dato;
 
-    public Vare(int vareNummer, int ordreNummber, int antall, String mottaker, String Plassering, String dato) {
+    public Vare(String vareNummer, String ordreNummber, String antall, String mottaker, String plassering, String dato) {
         this.vareNummer = vareNummer;
         this.ordreNummber = ordreNummber;
         this.antall = antall;
         this.mottaker = mottaker;
-        this.Plassering = Plassering;
+        this.plassering = plassering;
         this.dato = dato;
     }
 
-    public int getVareNummer() {
+    public String getVareNummer() {
         return vareNummer;
     }
 
-    public void setVareNummer(int vareNummer) {
+    public void setVareNummer(String vareNummer) {
         this.vareNummer = vareNummer;
     }
 
-    public int getOrdreNummber() {
+    public String getOrdreNummber() {
         return ordreNummber;
     }
 
-    public void setOrdreNummber(int ordreNummber) {
+    public void setOrdreNummber(String ordreNummber) {
         this.ordreNummber = ordreNummber;
     }
 
-    public int getAntall() {
+    public String getAntall() {
         return antall;
     }
 
-    public void setAntall(int antall) {
+    public void setAntall(String antall) {
         this.antall = antall;
     }
 
@@ -59,11 +59,11 @@ public class Vare {
     }
 
     public String getPlassering() {
-        return Plassering;
+        return plassering;
     }
 
     public void setPlassering(String Plassering) {
-        this.Plassering = Plassering;
+        this.plassering = plassering;
     }
 
     public String getDato() {
