@@ -59,7 +59,7 @@ public class WMS extends Application
         }
         
         btn2.setOnAction((ActionEvent ev) ->{
-            Test t = new Test();
+            VareRegistrering t = new VareRegistrering();
             primaryStage.setScene(t.getScene(primaryStage));
             primaryStage.show();
             
