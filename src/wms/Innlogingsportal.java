@@ -3,6 +3,7 @@ package wms;/**
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,16 +20,12 @@ import javafx.stage.Stage;
 
 
 
-public class Innlogingsportal extends Application {
+public class Innlogingsportal {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage primaryStage)
+    public Scene getScene(Stage primaryStage)
     {
-        primaryStage.setTitle("Login");
+        primaryStage.setTitle("Innlogging");
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -47,23 +44,26 @@ public class Innlogingsportal extends Application {
 
         Scene scene = new Scene(grid, 400, 275);
 
-        Text scenetitle = new Text("Login");
+        Text scenetitle = new Text("Innlogging");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
-        Label userName = new Label("Username:");
+        Label userName = new Label("Brukernavn:");
         grid.add(userName, 0 , 1);
 
         TextField userTextField = new TextField();
         grid.add(userTextField, 1, 1);
 
-        Label password = new Label("Password:");
+        Label password = new Label("Passord:");
         grid.add(password, 0 ,2);
 
         PasswordField passwordBox = new PasswordField();
         grid.add(passwordBox, 1, 2);
 
 
+        btn.setOnAction((ActionEvent e)->{
+            WMS w = new WMS();
+        w.start(primaryStage);});
 
 
 
@@ -73,6 +73,6 @@ public class Innlogingsportal extends Application {
         primaryStage.setWidth(primaryStage.getWidth());
         primaryStage.setHeight(primaryStage.getHeight());
 
-
+        return scene;
     }
 }

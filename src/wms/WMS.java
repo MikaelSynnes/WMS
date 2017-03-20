@@ -34,12 +34,14 @@ public class WMS extends Application {
 
     VBox headerBox;
     VareRegistrering reg;
+    Lageroversikttabell lager;
 
     public WMS() {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();
-        reg= new VareRegistrering();
+        reg = new VareRegistrering();
+        lager= new Lageroversikttabell();
 
     }
 
@@ -56,9 +58,10 @@ public class WMS extends Application {
         header.setPadding(new Insets(20));
 
         Font buttonFont = new Font(20);
+       
 
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
-        Button btn = createButton("Lageroversikt", null, primaryStage);
+        Button btn = createButton("Lageroversikt", lager.getScene(primaryStage), primaryStage);
         buttons.add(btn);
         Button btn2 = createButton("Vareregistrering", reg.getScene(primaryStage), primaryStage);
         buttons.add(btn2);
@@ -69,11 +72,8 @@ public class WMS extends Application {
 
         for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
-   
+
         }
-        
-   
-        
 
         root.setAlignment(Pos.CENTER);
 
@@ -93,11 +93,14 @@ public class WMS extends Application {
         root.add(btn4, 1, 2);
 
         primaryStage.setTitle("WMS 2000");
-     
-         
-                   primaryStage.setScene(scene);
+
+        primaryStage.setScene(scene);
+        minWidth = primaryStage.getWidth();
+        minHeight = primaryStage.getHeight();
+        primaryStage.setMinWidth(minWidth);
+        primaryStage.setMinHeight(minHeight);
         primaryStage.show();
-      /*  Button storage_overview_button = new Button();
+        /*  Button storage_overview_button = new Button();
         storage_overview_button.setText("Lageroversikt");
         storage_overview_button.setPrefSize(150, 50);
         storage_overview_button.setOnAction((ActionEvent event) -> {
@@ -145,11 +148,9 @@ public class WMS extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
-        minWidth = primaryStage.getWidth();
-        minHeight = primaryStage.getHeight();
-        primaryStage.setMinWidth(minWidth);
-        primaryStage.setMinHeight(minHeight);
-        */
+        
+         */
+
     }
 
     /**
