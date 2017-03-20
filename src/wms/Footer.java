@@ -5,7 +5,9 @@
  */
 package wms;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -18,10 +20,12 @@ public class Footer {
         this.title = "This is a footer";
     }
     
-    public Label createFooter(){
+    public VBox createFooter(){
         Label footer = new Label(title);
+        VBox vb = new VBox();
+        vb.getChildren().addAll(footer);
+        vb.setAlignment(Pos.CENTER);
         
-        
-        return footer;
+        return vb;
     }
 }

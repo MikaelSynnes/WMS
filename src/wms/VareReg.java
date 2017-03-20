@@ -2,7 +2,6 @@ package wms;
 
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,10 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
  
 public class VareReg extends Application {
@@ -39,66 +38,49 @@ public class VareReg extends Application {
         //header
         Header head = new Header("Vare registrering");
         Label header = head.createHeader();
+        
+        //searchfield
+        TextField searchField = new TextField();
+        HBox hbox = new HBox();
+        Button searchBtn = new Button("Søk");
+        hbox.getChildren().addAll(searchField, searchBtn);
+        hbox.setSpacing(10);
  
         //table column
-        TableColumn vareNummer = new TableColumn("Varenummer");
-        vareNummer.setMinWidth(100);
-        vareNummer.setCellValueFactory(
-                new PropertyValueFactory<>("varenummer"));
- 
-        TableColumn ordreNummer = new TableColumn("Ordrenummer");
-        ordreNummer.setMinWidth(100);
-        ordreNummer.setCellValueFactory(
-                new PropertyValueFactory<>("ordrenummer"));
-        
-        TableColumn antall = new TableColumn("Antall");
-        antall.setMinWidth(100);
-        antall.setCellValueFactory(
-                new PropertyValueFactory<>("antall"));
-        
-        TableColumn mottaker = new TableColumn("Mottaker");
-        mottaker.setMinWidth(100);
-        mottaker.setCellValueFactory(
-                new PropertyValueFactory<>("mottaker"));
-        
-        TableColumn plassering = new TableColumn("Plassering");
-        plassering.setMinWidth(100);
-        plassering.setCellValueFactory(
-                new PropertyValueFactory<>("plassering"));
-        
-        TableColumn dato = new TableColumn("Dato");
-        dato.setMinWidth(100);
-        dato.setCellValueFactory(
-                new PropertyValueFactory<>("dato"));
+        TableColumn vareNummer = setTableColumn("Varenummer", 100, "varenummer");
+        TableColumn ordreNummer = setTableColumn("Ordrenummer", 100, "ordrenummer");
+        TableColumn antall = setTableColumn("Antall", 100, "antall");
+        TableColumn mottaker = setTableColumn("Mottaker", 100, "mottaker");
+        TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
+        TableColumn dato = setTableColumn("Dato", 100, "dato");
  
         table.setItems(data);
         table.getColumns().addAll(vareNummer, ordreNummer, antall, mottaker, plassering, dato);
  
         //button
-        final Button saveButton = new Button("Lagre");
+        Button saveButton = new Button("Lagre");
         saveButton.setOnAction((ActionEvent e) -> {
             data.add(new Vare("2","2","2","save","save","save"));
          });
         
         Button backButton = new Button("Tilbake");
         backButton.setOnAction((ActionEvent b)->{
-            data.add(new Vare("2","4","5","tilbake","tilbake","tilbake"));
+            data.add(new Vare("2","4","5","back","back","back"));
         });
         
-        
- 
-        hb.getChildren().addAll(saveButton, backButton);
+        //buttonbox
+        hb.getChildren().addAll(backButton, saveButton);
         hb.setAlignment(Pos.BASELINE_RIGHT);
         hb.setSpacing(3);
  
         Footer foot = new Footer();
-        Label footer = foot.createFooter();
+        VBox footer = foot.createFooter();
         
         //VBox
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 10, 10, 10));
-        vbox.getChildren().addAll(header, table, hb,footer);
+        vbox.getChildren().addAll(header, hbox, table, hb, footer);
  
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
         
@@ -106,13 +88,37 @@ public class VareReg extends Application {
         double minWidth;
         double minHeight;
         
+        //css
+        scene.getStylesheets().add
+        (VareReg.class.getResource("style.css").toExternalForm());
+        
+        
         stage.setTitle("Vare Registrering");
         stage.setScene(scene);
         stage.show();
+               
+        //width and height of window
         minWidth = stage.getWidth();
         minHeight = stage.getHeight();
         stage.setWidth(minWidth);
         stage.setHeight(minHeight);
+    }
+    
+    
+    /**
+     * create tablecolumn for table
+     * @param title, title of column 
+     * @param minwidth, width of column
+     * @param value, same as in Vare class variable
+     * @return tblCol, a table column
+     */
+    public TableColumn setTableColumn(String title, int minwidth, String value){
+        TableColumn tblCol = new TableColumn(title);
+        tblCol.setMinWidth(minwidth);
+        tblCol.setCellValueFactory(
+                new PropertyValueFactory<>(value));
+        
+        return tblCol;
     }
  
 
