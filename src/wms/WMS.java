@@ -10,12 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -84,6 +87,51 @@ public class WMS extends Application {
         root.add(btn4, 1, 2);
 
         primaryStage.setTitle("WMS 2000");
+        Button storage_overview_button = new Button();
+        storage_overview_button.setText("Lageroversikt");
+        storage_overview_button.setPrefSize(150, 50);
+        storage_overview_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Lageroversikt!");
+        });
+
+        Button product_registration_button = new Button();
+        product_registration_button.setText("Produktregistrering");
+        product_registration_button.setPrefSize(150, 50);
+        product_registration_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Produktregistrering!");
+        });
+
+        Button truck_overview_button = new Button();
+        truck_overview_button.setText("Truck");
+        truck_overview_button.setPrefSize(150, 50);
+        truck_overview_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Truck!");
+        });
+
+        Button employee_overview_button = new Button();
+        employee_overview_button.setText("Ansatte");
+        employee_overview_button.setPrefSize(150, 50);
+        employee_overview_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Ansatte!");
+        });
+
+        FlowPane flowPane = new FlowPane();
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
+        flowPane.setVgap(4);
+        flowPane.setHgap(4);
+        flowPane.setPrefWrapLength(210);
+        flowPane.setAlignment(Pos.CENTER);
+        flowPane.getChildren().add(storage_overview_button);
+        flowPane.getChildren().add(product_registration_button);
+        flowPane.getChildren().add(truck_overview_button);
+        flowPane.getChildren().add(employee_overview_button);
+
+
+
+
+        Scene scene = new Scene(flowPane, 400, 250);
+
+        primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
         minWidth = primaryStage.getWidth();
