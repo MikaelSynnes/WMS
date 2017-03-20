@@ -119,7 +119,7 @@ public class tableTruck extends Application {
         
         
         TableColumn modelCol = new TableColumn("Model");
-        modelCol.setMinWidth(30);
+        modelCol.setMinWidth(50);
         modelCol.setCellValueFactory(
             new PropertyValueFactory<Truck, String>("model"));
         modelCol.setCellFactory(cellFactory);

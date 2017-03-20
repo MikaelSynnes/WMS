@@ -32,7 +32,7 @@ public class tableAnsatt extends Application {
             FXCollections.observableArrayList(
             new Truck("9432", "Per", "Boss man", "A", "Per@lager.no", "99443322"),
             new Truck("6538", "Lars", "Truck man", "A4", "Lars@lager.no", "86547762"),
-            new Truck("1932", "Kari", "IT", "A", "Kari@lager.no", "99233451"),
+            new Truck("1932", "Kari", "IT", "A", "Kari_pedrosen_mor@lager.no", "99233451"),
             new Truck("6543", "Mari", "Truck Woman", "A2", "Mari@lager.no","99343216"),
             new Truck("9931", "Mons", "Lager Arbeider", "A2", "Mons@lager.no", "44753234"));
     final HBox hb = new HBox();
@@ -136,7 +136,7 @@ public class tableAnsatt extends Application {
         );
         
         TableColumn epostCol = new TableColumn("E-post");
-        epostCol.setMinWidth(80);
+        epostCol.setMinWidth(200);
         epostCol.setCellValueFactory(
             new PropertyValueFactory<Truck, String>("epost"));
         epostCol.setCellFactory(cellFactory);
