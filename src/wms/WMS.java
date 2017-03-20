@@ -42,9 +42,10 @@ public class WMS extends Application
         header.setPadding(new Insets(20));
 
         Font buttonFont = new Font(20);
+        Lageroversikttabell l= new Lageroversikttabell();
 
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
-        Button btn = createButton("Lageroversikt", null, primaryStage);
+        Button btn = createButton("Lageroversikt", l.getScene(primaryStage), primaryStage);
         buttons.add(btn);
         Button btn2 = createButton("Vareregistrering", null, primaryStage);
         buttons.add(btn2);
