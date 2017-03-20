@@ -57,6 +57,14 @@ public class WMS extends Application
         {
             currentButton.setFont(buttonFont);
         }
+        
+        btn2.setOnAction((ActionEvent ev) ->{
+            Test t = new Test();
+            primaryStage.setScene(t.getScene(primaryStage));
+            primaryStage.show();
+            
+        });
+        
 
         GridPane root = new GridPane();
         root.setAlignment(Pos.CENTER);
