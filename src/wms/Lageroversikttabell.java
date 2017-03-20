@@ -80,7 +80,7 @@ public class Lageroversikttabell extends Application {
         });
         hb.getChildren().addAll(tilbake);
 
-        final Button addButton = new Button("Add");
+        final Button addButton = new Button("Legg til");
         addButton.setOnAction((ActionEvent e) ->{
             data.add(new Vare("X", "Y", "J", "i", "s", "o"));
         });
