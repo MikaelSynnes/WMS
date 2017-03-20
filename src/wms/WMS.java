@@ -33,11 +33,13 @@ public class WMS extends Application {
     Scene scene;
 
     VBox headerBox;
+    VareRegistrering reg;
 
     public WMS() {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();
+        reg= new VareRegistrering();
 
     }
 
@@ -58,7 +60,7 @@ public class WMS extends Application {
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
         Button btn = createButton("Lageroversikt", null, primaryStage);
         buttons.add(btn);
-        Button btn2 = createButton("Vareregistrering", null, primaryStage);
+        Button btn2 = createButton("Vareregistrering", reg.getScene(primaryStage), primaryStage);
         buttons.add(btn2);
         Button btn3 = createButton("Truck", null, primaryStage);
         buttons.add(btn3);
@@ -67,7 +69,11 @@ public class WMS extends Application {
 
         for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
+   
         }
+        
+   
+        
 
         root.setAlignment(Pos.CENTER);
 
@@ -87,7 +93,11 @@ public class WMS extends Application {
         root.add(btn4, 1, 2);
 
         primaryStage.setTitle("WMS 2000");
-        Button storage_overview_button = new Button();
+     
+         
+                   primaryStage.setScene(scene);
+        primaryStage.show();
+      /*  Button storage_overview_button = new Button();
         storage_overview_button.setText("Lageroversikt");
         storage_overview_button.setPrefSize(150, 50);
         storage_overview_button.setOnAction((ActionEvent event) -> {
@@ -114,6 +124,7 @@ public class WMS extends Application {
         employee_overview_button.setOnAction((ActionEvent event) -> {
             System.out.println("Ansatte!");
         });
+     
 
         FlowPane flowPane = new FlowPane();
         flowPane.setPadding(new Insets(10, 10, 10, 10));
@@ -138,6 +149,7 @@ public class WMS extends Application {
         minHeight = primaryStage.getHeight();
         primaryStage.setMinWidth(minWidth);
         primaryStage.setMinHeight(minHeight);
+        */
     }
 
     /**

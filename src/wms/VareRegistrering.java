@@ -1,7 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package wms;
 
-
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,20 +21,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
- 
-public class VareReg extends Application {
- 
-    private final TableView<Vare> table = new TableView<>();
-    private final ObservableList<Vare> data =
-            FXCollections.observableArrayList(new Vare("1","3","2","A","B","C"));
-    final HBox hb = new HBox();
- 
-    public static void main(String[] args) {
-        launch(args);
+
+/**
+ *
+ * @author Kristian
+ */
+public class VareRegistrering {
+    private final TableView<Vare2> table ;
+    private final ObservableList<Vare2> data ;
+            
+    final HBox hb;
+    
+    public VareRegistrering(){
+        this.table = new TableView<>();
+        this.data = FXCollections.observableArrayList(new Vare2("1","3","2","A","B","C"));
+        this.hb = new HBox();
     }
- 
-    @Override
-    public void start(Stage stage) {
+    
+    public Scene getScene(Stage stage){
         Scene scene = new Scene(new Group());
 
  
@@ -60,12 +67,13 @@ public class VareReg extends Application {
         //button
         Button saveButton = new Button("Lagre");
         saveButton.setOnAction((ActionEvent e) -> {
-            data.add(new Vare("2","2","2","save","save","save"));
+            data.add(new Vare2("2","2","2","save","save","save"));
          });
         
         Button backButton = new Button("Tilbake");
         backButton.setOnAction((ActionEvent b)->{
-            data.add(new Vare("2","4","5","back","back","back"));
+            WMS w = new WMS();
+            w.start(stage);
         });
         
         //buttonbox
@@ -73,6 +81,7 @@ public class VareReg extends Application {
         hb.setAlignment(Pos.BASELINE_RIGHT);
         hb.setSpacing(3);
  
+        //footer
         Footer foot = new Footer();
         VBox footer = foot.createFooter();
         
@@ -87,12 +96,7 @@ public class VareReg extends Application {
         
         double minWidth;
         double minHeight;
-        
-        //css
-        scene.getStylesheets().add
-        (VareReg.class.getResource("style.css").toExternalForm());
-        
-        
+
         stage.setTitle("Vare Registrering");
         stage.setScene(scene);
         stage.show();
@@ -102,9 +106,11 @@ public class VareReg extends Application {
         minHeight = stage.getHeight();
         stage.setWidth(minWidth);
         stage.setHeight(minHeight);
+        
+        return scene;
     }
     
-    
+
     /**
      * create tablecolumn for table
      * @param title, title of column 
@@ -120,6 +126,5 @@ public class VareReg extends Application {
         
         return tblCol;
     }
- 
-
-} 
+    
+}
