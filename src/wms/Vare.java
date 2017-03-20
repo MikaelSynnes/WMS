@@ -1,50 +1,77 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package wms;
 
-import javafx.beans.property.SimpleStringProperty;
-
-import javax.print.DocFlavor;
-
 /**
- * Created by aleksander on 3/17/17.
+ *
+ * @author Kristian
  */
 public class Vare {
-    private final String vareNummer;
-    private final String beskrivelse;
-    private final String type;
-    private final String antall;
-    private final String plassering;
-    private final String dato;
+    private String vareNummer;
+    private String ordreNummber;
+    private String antall;
+    private String mottaker;
+    private String plassering;
+    private String dato;
 
-    public Vare(String vareNummer, String beskrivelse, String type, String antall, String plassering, String dato) {
+    public Vare(String vareNummer, String ordreNummber, String antall, String mottaker, String plassering, String dato) {
         this.vareNummer = vareNummer;
-        this.beskrivelse = beskrivelse;
-        this.type = type;
+        this.ordreNummber = ordreNummber;
         this.antall = antall;
+        this.mottaker = mottaker;
         this.plassering = plassering;
         this.dato = dato;
     }
 
-    public String getVarenummer() {
+    public String getVareNummer() {
         return vareNummer;
     }
 
-    public String getBeskrivelse() {
-        return beskrivelse;
+    public void setVareNummer(String vareNummer) {
+        this.vareNummer = vareNummer;
     }
 
-    public String getType() {
-        return type;
+    public String getOrdreNummber() {
+        return ordreNummber;
+    }
+
+    public void setOrdreNummber(String ordreNummber) {
+        this.ordreNummber = ordreNummber;
     }
 
     public String getAntall() {
         return antall;
     }
 
+    public void setAntall(String antall) {
+        this.antall = antall;
+    }
+
+    public String getMotttaker() {
+        return mottaker;
+    }
+
+    public void setMottaker(String mottaker) {
+        this.mottaker = mottaker;
+    }
+
     public String getPlassering() {
         return plassering;
+    }
+
+    public void setPlassering(String Plassering) {
+        this.plassering = plassering;
     }
 
     public String getDato() {
         return dato;
     }
+
+    public void setDato(String dato) {
+        this.dato = dato;
+    }
+
 }

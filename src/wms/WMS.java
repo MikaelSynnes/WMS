@@ -49,7 +49,7 @@ public class WMS extends Application {
         double minHeight;
 
         // Tittel
-        Label header = new Label("WMS-System");
+        Label header = new Label("WMS");
         header.setFont(new Font(40));
         header.setPadding(new Insets(20));
 
