@@ -54,15 +54,16 @@ public class VareRegistrering {
         hbox.setSpacing(10);
  
         //table column
-        TableColumn vareNummer = setTableColumn("Varenummer", 110, "varenummer");
-        TableColumn ordreNummer = setTableColumn("Ordrenummer", 110, "ordrenummer");
-        TableColumn antall = setTableColumn("Antall", 110, "antall");
-        TableColumn mottaker = setTableColumn("Mottaker", 110, "mottaker");
-        TableColumn plassering = setTableColumn("Plassering", 110, "plassering");
-        TableColumn dato = setTableColumn("Dato", 110, "dato");
+        TableColumn vareNummer = setTableColumn("Varenummer", 100, "varenummer");
+        TableColumn ordreNummer = setTableColumn("Ordrenummer", 100, "ordrenummer");
+        TableColumn antall = setTableColumn("Antall", 100, "antall");
+        TableColumn mottaker = setTableColumn("Mottaker", 100, "mottaker");
+        TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
+        TableColumn dato = setTableColumn("Dato", 100, "dato");
+        TableColumn mottat = setTableColumn("Mottat", 100, "mottat");
  
         table.setItems(data);
-        table.getColumns().addAll(vareNummer, ordreNummer, antall, mottaker, plassering, dato);
+        table.getColumns().addAll(vareNummer, ordreNummer, antall, mottaker, plassering, dato, mottat);
  
         //button
         Button saveButton = new Button("Lagre");
