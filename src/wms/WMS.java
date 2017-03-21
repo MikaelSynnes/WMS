@@ -10,12 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -30,11 +33,19 @@ public class WMS extends Application {
     Scene scene;
 
     VBox headerBox;
+    VareRegistrering reg;
+    Lageroversikttabell lager;
+    tableTruck truck;
+    tableAnsatt ansatt;
 
     public WMS() {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();
+        reg = new VareRegistrering();
+        lager= new Lageroversikttabell();
+        truck = new tableTruck();
+        ansatt = new tableAnsatt();
 
     }
 
@@ -46,24 +57,26 @@ public class WMS extends Application {
         double minHeight;
 
         // Tittel
-        Label header = new Label("WMS-System");
+        Label header = new Label("WMS");
         header.setFont(new Font(40));
         header.setPadding(new Insets(20));
 
         Font buttonFont = new Font(20);
+       
 
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
-        Button btn = createButton("Lageroversikt", null, primaryStage);
+        Button btn = createButton("Lageroversikt", lager.getScene(primaryStage), primaryStage);
         buttons.add(btn);
-        Button btn2 = createButton("Vareregistrering", null, primaryStage);
+        Button btn2 = createButton("Vareregistrering", reg.getScene(primaryStage), primaryStage);
         buttons.add(btn2);
-        Button btn3 = createButton("Truck", null, primaryStage);
+        Button btn3 = createButton("Truck", truck.getScene(primaryStage), primaryStage);
         buttons.add(btn3);
-        Button btn4 = createButton("Ansatte", null, primaryStage);
+        Button btn4 = createButton("Ansatte", ansatt.getScene(primaryStage), primaryStage);
         buttons.add(btn4);
 
         for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
+
         }
 
         root.setAlignment(Pos.CENTER);
@@ -84,12 +97,64 @@ public class WMS extends Application {
         root.add(btn4, 1, 2);
 
         primaryStage.setTitle("WMS 2000");
+
         primaryStage.setScene(scene);
-        primaryStage.show();
         minWidth = primaryStage.getWidth();
         minHeight = primaryStage.getHeight();
-        primaryStage.setMinWidth(minWidth);
-        primaryStage.setMinHeight(minHeight);
+        primaryStage.setMinWidth(450);
+        primaryStage.setMinHeight(620);
+        primaryStage.show();
+        /*  Button storage_overview_button = new Button();
+        storage_overview_button.setText("Lageroversikt");
+        storage_overview_button.setPrefSize(150, 50);
+        storage_overview_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Lageroversikt!");
+        });
+
+        Button product_registration_button = new Button();
+        product_registration_button.setText("Produktregistrering");
+        product_registration_button.setPrefSize(150, 50);
+        product_registration_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Produktregistrering!");
+        });
+
+        Button truck_overview_button = new Button();
+        truck_overview_button.setText("Truck");
+        truck_overview_button.setPrefSize(150, 50);
+        truck_overview_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Truck!");
+        });
+
+        Button employee_overview_button = new Button();
+        employee_overview_button.setText("Ansatte");
+        employee_overview_button.setPrefSize(150, 50);
+        employee_overview_button.setOnAction((ActionEvent event) -> {
+            System.out.println("Ansatte!");
+        });
+     
+
+        FlowPane flowPane = new FlowPane();
+        flowPane.setPadding(new Insets(10, 10, 10, 10));
+        flowPane.setVgap(4);
+        flowPane.setHgap(4);
+        flowPane.setPrefWrapLength(210);
+        flowPane.setAlignment(Pos.CENTER);
+        flowPane.getChildren().add(storage_overview_button);
+        flowPane.getChildren().add(product_registration_button);
+        flowPane.getChildren().add(truck_overview_button);
+        flowPane.getChildren().add(employee_overview_button);
+
+
+
+
+        Scene scene = new Scene(flowPane, 400, 250);
+
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+         */
+
     }
 
     /**
