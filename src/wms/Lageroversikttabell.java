@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 
 import javafx.geometry.Pos;
@@ -91,8 +90,6 @@ public class Lageroversikttabell {
 
         final Button tilbake = new Button("Tilbake");
         tilbake.setOnAction((ActionEvent e) ->{
-             WMS w = new WMS();
-            w.start(stage);
 
         });
         hb.getChildren().addAll(tilbake);
@@ -128,18 +125,9 @@ public class Lageroversikttabell {
         final Button Search = new Button("Søk");
 
         final Button addButton = new Button("Legg til");
-       //* addButton.setOnAction(new EventHandler<ActionEvent>() {
-           // @Override
-            //public void handle(ActionEvent event) {
-               // public void handle(ActionEvent e)
-               // {
-                   // data.add(new Vare(
-                        //    addVareNummer.getText();
-                      //      addBeskrivelse.getText();
-                    //        addType.getText();
-                  //          addAntall.getText();
-                //            addPlassering.getText();
-              //}
+        addButton.setOnAction((ActionEvent e) ->{
+           // data.add
+        });
 
        hb.getChildren().addAll(addButton);
 
