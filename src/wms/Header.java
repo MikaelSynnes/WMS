@@ -27,7 +27,7 @@ public class Header {
         public Label createHeader(){
         Label header = new Label(title);
         
-        header.setFont(new Font(30));
+        header.setFont(new Font("arial", 20));
         
         return header;
     }

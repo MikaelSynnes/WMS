@@ -35,6 +35,8 @@ public class WMS extends Application {
     VBox headerBox;
     VareRegistrering reg;
     Lageroversikttabell lager;
+    tableTruck truck;
+    tableAnsatt ansatt;
 
     public WMS() {
         root = new GridPane();
@@ -42,6 +44,8 @@ public class WMS extends Application {
         headerBox = new VBox();
         reg = new VareRegistrering();
         lager= new Lageroversikttabell();
+        truck = new tableTruck();
+        ansatt = new tableAnsatt();
 
     }
 
@@ -65,9 +69,9 @@ public class WMS extends Application {
         buttons.add(btn);
         Button btn2 = createButton("Vareregistrering", reg.getScene(primaryStage), primaryStage);
         buttons.add(btn2);
-        Button btn3 = createButton("Truck", null, primaryStage);
+        Button btn3 = createButton("Truck", truck.getScene(primaryStage), primaryStage);
         buttons.add(btn3);
-        Button btn4 = createButton("Ansatte", null, primaryStage);
+        Button btn4 = createButton("Ansatte", ansatt.getScene(primaryStage), primaryStage);
         buttons.add(btn4);
 
         for (Button currentButton : buttons) {
@@ -97,8 +101,8 @@ public class WMS extends Application {
         primaryStage.setScene(scene);
         minWidth = primaryStage.getWidth();
         minHeight = primaryStage.getHeight();
-        primaryStage.setMinWidth(minWidth);
-        primaryStage.setMinHeight(minHeight);
+        primaryStage.setMinWidth(450);
+        primaryStage.setMinHeight(620);
         primaryStage.show();
         /*  Button storage_overview_button = new Button();
         storage_overview_button.setText("Lageroversikt");
