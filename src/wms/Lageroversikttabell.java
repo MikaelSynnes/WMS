@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 
 import javafx.geometry.Pos;
@@ -108,16 +109,35 @@ public class Lageroversikttabell {
         addType.setMaxWidth(110);
 
         final TextField addAntall = new TextField();
+        addAntall.setPromptText("Antall");
+        addAntall.setMaxWidth(110);
+
+        final TextField addPlassering = new TextField();
+        addPlassering.setPromptText("Plassering");
+        addPlassering.setMaxWidth(110);
+
+        final TextField addDato = new TextField();
+        addDato.setPromptText("Dato");
+        addDato.setMaxWidth(110);
 
 
+        lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato);
 
-        lhb.getChildren().addAll(addVareNummer, addBeskrivelse);
         final Button Search = new Button("Søk");
 
         final Button addButton = new Button("Legg til");
-        addButton.setOnAction((ActionEvent e) ->{
-           // data.add
-        });
+       //* addButton.setOnAction(new EventHandler<ActionEvent>() {
+           // @Override
+            //public void handle(ActionEvent event) {
+               // public void handle(ActionEvent e)
+               // {
+                   // data.add(new Vare(
+                        //    addVareNummer.getText();
+                      //      addBeskrivelse.getText();
+                    //        addType.getText();
+                  //          addAntall.getText();
+                //            addPlassering.getText();
+              //}
 
        hb.getChildren().addAll(addButton);
 
