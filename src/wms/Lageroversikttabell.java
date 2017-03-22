@@ -90,9 +90,8 @@ public class Lageroversikttabell {
 
         final Button tilbake = new Button("Tilbake");
         tilbake.setOnAction((ActionEvent e) ->{
-             WMS w = new WMS();
-            w.start(stage);
-
+        WMS w = new WMS();
+        w.start(stage); 
         });
         hb.getChildren().addAll(tilbake);
 
@@ -110,10 +109,20 @@ public class Lageroversikttabell {
         addType.setMaxWidth(110);
 
         final TextField addAntall = new TextField();
+        addAntall.setPromptText("Antall");
+        addAntall.setMaxWidth(110);
+
+        final TextField addPlassering = new TextField();
+        addPlassering.setPromptText("Plassering");
+        addPlassering.setMaxWidth(110);
+
+        final TextField addDato = new TextField();
+        addDato.setPromptText("Dato");
+        addDato.setMaxWidth(110);
 
 
+        lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato);
 
-        lhb.getChildren().addAll(addVareNummer, addBeskrivelse);
         final Button Search = new Button("Søk");
 
         final Button addButton = new Button("Legg til");
