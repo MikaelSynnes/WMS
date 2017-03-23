@@ -29,19 +29,19 @@ import javafx.util.Callback;
  
 public class tableAnsatt{
  
-    private TableView<Truck> table;
-    private final ObservableList<Truck> data ;
+    private TableView<Ansatt> table;
+    private final ObservableList<Ansatt> data ;
     final HBox hb;
  
     public tableAnsatt(){
         this.data = FXCollections.observableArrayList(
-            new Truck("9432", "Per", "Boss man", "A", "Per@lager.no", "99443322"),
-            new Truck("6538", "Lars", "Truck man", "A4", "Lars@lager.no", "86547762"),
-            new Truck("1932", "Kari", "IT", "A", "Kari_pedrosen_mor@lager.no", "99233451"),
-            new Truck("6543", "Mari", "Truck Woman", "A2", "Mari@lager.no","99343216"),
-            new Truck("9931", "Mons", "Lager Arbeider", "A2", "Mons@lager.no", "44753234"));
+            new Ansatt("9432", "Per", "Boss man", "A", "Per@lager.no", "99443322"),
+            new Ansatt("6538", "Lars", "Ansatt man", "A4", "Lars@lager.no", "86547762"),
+            new Ansatt("1932", "Kari", "IT", "A", "Kari_pedrosen_mor@lager.no", "99233451"),
+            new Ansatt("6543", "Mari", "Ansatt Woman", "A2", "Mari@lager.no","99343216"),
+            new Ansatt("9931", "Mons", "Lager Arbeider", "A2", "Mons@lager.no", "44753234"));
         this.hb = new HBox();
-        this.table = new TableView<Truck>();
+        this.table = new TableView<Ansatt>();
     }
  
     
@@ -76,13 +76,13 @@ public class tableAnsatt{
         TableColumn ansattNrCol = new TableColumn("Ansatt Nr");
         ansattNrCol.setMinWidth(100);
         ansattNrCol.setCellValueFactory(
-            new PropertyValueFactory<Truck, String>("ansattNr"));
+            new PropertyValueFactory<Ansatt, String>("ansattNr"));
         ansattNrCol.setCellFactory(cellFactory);
         ansattNrCol.setOnEditCommit(
-            new EventHandler<CellEditEvent<Truck, String>>() {
+            new EventHandler<CellEditEvent<Ansatt, String>>() {
                 @Override
-                public void handle(CellEditEvent<Truck, String> t) {
-                    ((Truck) t.getTableView().getItems().get(
+                public void handle(CellEditEvent<Ansatt, String> t) {
+                    ((Ansatt) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                         ).setAnsattNr(t.getNewValue());
                 }
@@ -93,13 +93,13 @@ public class tableAnsatt{
         TableColumn navnCol = new TableColumn("Navn");
         navnCol.setMinWidth(100);
         navnCol.setCellValueFactory(
-            new PropertyValueFactory<Truck, String>("navn"));
+            new PropertyValueFactory<Ansatt, String>("navn"));
         navnCol.setCellFactory(cellFactory);
         navnCol.setOnEditCommit(
-            new EventHandler<CellEditEvent<Truck, String>>() {
+            new EventHandler<CellEditEvent<Ansatt, String>>() {
                 @Override
-                public void handle(CellEditEvent<Truck, String> t) {
-                    ((Truck) t.getTableView().getItems().get(
+                public void handle(CellEditEvent<Ansatt, String> t) {
+                    ((Ansatt) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                         ).setNavn(t.getNewValue());
                 }
@@ -109,13 +109,13 @@ public class tableAnsatt{
         TableColumn stillingCol = new TableColumn("Stilling");
         stillingCol.setMinWidth(30);
         stillingCol.setCellValueFactory(
-            new PropertyValueFactory<Truck, String>("stilling"));
+            new PropertyValueFactory<Ansatt, String>("stilling"));
         stillingCol.setCellFactory(cellFactory);
         stillingCol.setOnEditCommit(
-            new EventHandler<CellEditEvent<Truck, String>>() {
+            new EventHandler<CellEditEvent<Ansatt, String>>() {
                 @Override
-                public void handle(CellEditEvent<Truck, String> t) {
-                    ((Truck) t.getTableView().getItems().get(
+                public void handle(CellEditEvent<Ansatt, String> t) {
+                    ((Ansatt) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                         ).setStilling(t.getNewValue());
                 }
@@ -126,13 +126,13 @@ public class tableAnsatt{
         TableColumn avdelingCol = new TableColumn("Avdeling");
         avdelingCol.setMinWidth(30);
         avdelingCol.setCellValueFactory(
-            new PropertyValueFactory<Truck, String>("avdeling"));
+            new PropertyValueFactory<Ansatt, String>("avdeling"));
         avdelingCol.setCellFactory(cellFactory);
         avdelingCol.setOnEditCommit(
-            new EventHandler<CellEditEvent<Truck, String>>() {
+            new EventHandler<CellEditEvent<Ansatt, String>>() {
                 @Override
-                public void handle(CellEditEvent<Truck, String> t) {
-                    ((Truck) t.getTableView().getItems().get(
+                public void handle(CellEditEvent<Ansatt, String> t) {
+                    ((Ansatt) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                         ).setStilling(t.getNewValue());
                 }
@@ -142,13 +142,13 @@ public class tableAnsatt{
         TableColumn epostCol = new TableColumn("E-post");
         epostCol.setMinWidth(200);
         epostCol.setCellValueFactory(
-            new PropertyValueFactory<Truck, String>("epost"));
+            new PropertyValueFactory<Ansatt, String>("epost"));
         epostCol.setCellFactory(cellFactory);
         epostCol.setOnEditCommit(
-            new EventHandler<CellEditEvent<Truck, String>>() {
+            new EventHandler<CellEditEvent<Ansatt, String>>() {
                 @Override
-                public void handle(CellEditEvent<Truck, String> t) {
-                    ((Truck) t.getTableView().getItems().get(
+                public void handle(CellEditEvent<Ansatt, String> t) {
+                    ((Ansatt) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                         ).setStilling(t.getNewValue());
                 }
@@ -158,13 +158,13 @@ public class tableAnsatt{
         TableColumn telefonCol = new TableColumn("Telefon");
         telefonCol.setMinWidth(110);
         telefonCol.setCellValueFactory(
-            new PropertyValueFactory<Truck, String>("telefon"));
+            new PropertyValueFactory<Ansatt, String>("telefon"));
         telefonCol.setCellFactory(cellFactory);
         telefonCol.setOnEditCommit(
-            new EventHandler<CellEditEvent<Truck, String>>() {
+            new EventHandler<CellEditEvent<Ansatt, String>>() {
                 @Override
-                public void handle(CellEditEvent<Truck, String> t) {
-                    ((Truck) t.getTableView().getItems().get(
+                public void handle(CellEditEvent<Ansatt, String> t) {
+                    ((Ansatt) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                         ).setStilling(t.getNewValue());
                 }
@@ -203,7 +203,7 @@ public class tableAnsatt{
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                data.add(new Truck(
+                data.add(new Ansatt(
                         addAnsattNr.getText(),
                         addNavn.getText(),
                         addStilling.getText(),
@@ -242,7 +242,7 @@ public class tableAnsatt{
         return scene;
     }
  
-    public static class Truck {
+    public static class Ansatt {
  
         private final SimpleStringProperty ansattNr;
         private final SimpleStringProperty navn;
@@ -251,7 +251,7 @@ public class tableAnsatt{
         private final SimpleStringProperty epost;
         private final SimpleStringProperty telefon;
  
-        private Truck(String tNr, String navn, String stilling, String avdeling, String epost, String telefon) {
+        private Ansatt(String tNr, String navn, String stilling, String avdeling, String epost, String telefon) {
             this.ansattNr = new SimpleStringProperty(tNr);
             this.navn = new SimpleStringProperty(navn);
             this.stilling = new SimpleStringProperty(stilling);
@@ -309,7 +309,7 @@ public class tableAnsatt{
         }
     }
  
-    class EditingCell extends TableCell<Truck, String> {
+    class EditingCell extends TableCell<Ansatt, String> {
  
         private TextField textField;
  
