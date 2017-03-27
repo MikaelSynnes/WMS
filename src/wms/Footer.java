@@ -17,7 +17,7 @@ public class Footer {
     private String title;
 
     public Footer() {
-        this.title = "This is a footer";
+        this.title = "This is a so sick footer, its the best, yes it is!";
     }
     
     public VBox createFooter(){
