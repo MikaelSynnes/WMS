@@ -59,10 +59,20 @@ public class Lageroversikttabell {
 
 
         // Søk knapp
-        final Button Btn1 = new Button ("Søk");
+       
         TextField textField = new TextField();
         textField.setMaxWidth(130);
+         final Button Btn1 = new Button ("Søk");
+           Btn1.setOnAction(new EventHandler<ActionEvent>() {
 
+            @Override
+            public void handle(ActionEvent event) {
+               String i=    textField.getText();
+               WMSConnection con=new WMSConnection();
+               con.searchVare(i);
+              
+            }
+        });
 
 
         table.setEditable(true);
