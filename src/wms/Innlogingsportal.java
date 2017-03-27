@@ -63,7 +63,7 @@ public class Innlogingsportal {
 
         btn.setOnAction((ActionEvent e)->{
             WMS w = new WMS();
-        w.start(primaryStage);});
+            w.start(primaryStage);});
 
 
 
