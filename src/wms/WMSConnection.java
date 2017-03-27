@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -43,7 +44,7 @@ public class WMSConnection {
             ansatte = new ArrayList<>();
             while(rs.next()){
                 Ansatt ansatt = new Ansatt();
-                ansatt.setId(rs.getString("AnsattId"));
+                ansatt.setAnsattId(rs.getString("AnsattId"));
                 ansatt.setFornavn(rs.getString("Fornavn"));
                 ansatt.setEtternavn(rs.getString("Etternavn"));
                 ansatt.setStilling(rs.getString("stiling"));
@@ -78,4 +79,24 @@ public class WMSConnection {
         } 
         return produktList;
     }
-}
+        public List<Truck> getTruck(){
+        List<Truck> truckList = null;
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Truck");
+            truckList = new ArrayList<>();
+            while(rs.next()){
+                Truck truck = new Truck();
+                truck.setTruckId(rs.getString("TruckId"));
+                truck.setAnsvarlig(rs.getString("Ansvarlig"));
+                truck.setOperativ(rs.getString("Operativ"));
+                truck.setModel(rs.getString("Model"));
+                truck.setNeste_service(rs.getString("Neste_service"));
+                truckList.add(truck);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        } 
+        return truckList;
+}}

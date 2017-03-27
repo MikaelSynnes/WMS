@@ -90,7 +90,7 @@ public class Lageroversikttabell {
 
         final Button tilbake = new Button("Tilbake");
         tilbake.setOnAction((ActionEvent e) ->{
-        WMS w = new WMS();
+        WMStest w = new WMStest();
         w.start(stage); 
         });
         hb.getChildren().addAll(tilbake);

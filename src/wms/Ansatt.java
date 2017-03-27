@@ -10,72 +10,72 @@ package wms;
  * @author Haava
  */
 public class Ansatt {
-    private String id;
-    private String fornavn;
-    private String etternavn;
-    private String stilling;
-    private String epost;
-    private String telefon;
+    private String AnsattId;
+    private String Fornavn;
+    private String Etternavn;
+    private String Stilling;
+    private String Epost;
+    private String Telefon;
 
     public Ansatt(){}
     
     public Ansatt(String id, String fornavn, String etternavn, String stilling, String epost, String telefon) {
-        this.id = id;
-        this.fornavn = fornavn;
-        this.etternavn = etternavn;
-        this.stilling = stilling;
-        this.epost = epost;
-        this.telefon = telefon;
+        this.AnsattId = id;
+        this.Fornavn = fornavn;
+        this.Etternavn = etternavn;
+        this.Stilling = stilling;
+        this.Epost = epost;
+        this.Telefon = telefon;
     }
 
     
     
-    public String getId() {
-        return id;
+    public String getansattId() {
+        return AnsattId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAnsattId(String id) {
+        this.AnsattId = id;
     }
 
     public String getFornavn() {
-        return fornavn;
+        return Fornavn;
     }
 
     public void setFornavn(String fornavn) {
-        this.fornavn = fornavn;
+        this.Fornavn = fornavn;
     }
 
     public String getEtternavn() {
-        return etternavn;
+        return Etternavn;
     }
 
     public void setEtternavn(String etternavn) {
-        this.etternavn = etternavn;
+        this.Etternavn = etternavn;
     }
 
     public String getStilling() {
-        return stilling;
+        return Stilling;
     }
 
     public void setStilling(String stilling) {
-        this.stilling = stilling;
+        this.Stilling = stilling;
     }
 
     public String getEpost() {
-        return epost;
+        return Epost;
     }
 
     public void setEpost(String epost) {
-        this.epost = epost;
+        this.Epost = epost;
     }
 
     public String getTelefon() {
-        return telefon;
+        return Telefon;
     }
 
     public void setTelefon(String telefon) {
-        this.telefon = telefon;
+        this.Telefon = telefon;
     }
     
     
