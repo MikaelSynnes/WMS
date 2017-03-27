@@ -62,7 +62,7 @@ public class Innlogingsportal {
 
 
         btn.setOnAction((ActionEvent e)->{
-            WMS w = new WMS();
+            WMStest w = new WMStest();
         w.start(primaryStage);});
 
 

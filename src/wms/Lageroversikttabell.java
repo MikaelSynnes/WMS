@@ -91,6 +91,9 @@ public class Lageroversikttabell {
         final Button tilbake = new Button("Tilbake");
         tilbake.setOnAction((ActionEvent e) ->{
 
+        WMStest w = new WMStest();
+        w.start(stage); 
+
         });
         hb.getChildren().addAll(tilbake);
 
