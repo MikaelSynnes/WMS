@@ -17,11 +17,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.Scanner;
 
 
 
 public class Innlogingsportal {
 
+    Userpass userpass = new Userpass("806FxzcX85iE", "haavafl");
 
     public Scene getScene(Stage primaryStage)
     {
@@ -61,9 +63,21 @@ public class Innlogingsportal {
         grid.add(passwordBox, 1, 2);
 
 
-        btn.setOnAction((ActionEvent e)->{
-            WMStest w = new WMStest();
-        w.start(primaryStage);});
+
+
+
+            btn.setOnAction((ActionEvent e) -> {
+                String value1 = userTextField.getText();
+                String value2 = passwordBox.getText();
+                if(value1.equals(userpass.getUser()) && value2.equals(userpass.getPass())) {
+                    WMS w = new WMS();
+                    w.start(primaryStage);
+                }
+
+                });
+
+
+
 
 
 
