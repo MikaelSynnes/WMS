@@ -69,23 +69,23 @@ public class Lageroversikttabell {
 
         //kollonner
         TableColumn vareNummer = new TableColumn("Varenummer");
-        vareNummer.setMinWidth(110);
+        vareNummer.setMinWidth(125);
         vareNummer.setCellValueFactory(new PropertyValueFactory<>("varenummer"));
 
         TableColumn beskrivelse = new TableColumn("Beskrivelse");
-        beskrivelse.setMinWidth(110);
+        beskrivelse.setMinWidth(125);
         beskrivelse.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
         TableColumn type = new TableColumn("Type");
-        type.setMinWidth(110);
+        type.setMinWidth(125);
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
         TableColumn antall = new TableColumn("Antall");
-        antall.setMinWidth(110);
+        antall.setMinWidth(125);
         antall.setCellValueFactory(new PropertyValueFactory<>("antall"));
         TableColumn plassering = new TableColumn("Plassering");
-        plassering.setMinWidth(110);
+        plassering.setMinWidth(125);
         plassering.setCellValueFactory(new PropertyValueFactory<>("plassering"));
         TableColumn dato = new TableColumn("Dato");
-        dato.setMinWidth(110);
+        dato.setMinWidth(125);
         dato.setCellValueFactory(new PropertyValueFactory<>("dato"));
 
         table.setItems(data);
