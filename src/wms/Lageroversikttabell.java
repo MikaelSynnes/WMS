@@ -93,10 +93,10 @@ public class Lageroversikttabell {
 
         //tilbake kanpp
         final Button tilbake = new Button("Tilbake");
+        tilbake.setPrefSize(150, 20);
         tilbake.setOnAction((ActionEvent e) ->{
-            WMS w=new WMS();
+            WMStest w = new WMStest();
             w.start(stage);
-
         });
         hb.getChildren().addAll(tilbake);
 
@@ -120,13 +120,17 @@ public class Lageroversikttabell {
         final TextField addPlassering = new TextField();
         addPlassering.setPromptText("Plassering");
         addPlassering.setMaxWidth(110);
-
+      
+      
         final TextField addDato = new TextField();
         addDato.setPromptText("Dato");
         addDato.setMaxWidth(110);
 
         // legg til knapp
         final Button addButton = new Button("Legg til");
+
+
+
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -146,6 +150,15 @@ public class Lageroversikttabell {
                 addDato.clear();
             }
         });
+
+
+
+        lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
+
+
+
+       
+   
 
 
         lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);

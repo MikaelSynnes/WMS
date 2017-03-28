@@ -3,6 +3,7 @@ package wms;
 
 /**
  * Created by aleksander on 3/21/17.
+
  * Vare for lageroversiktstabell klassa
  */
 public class Vare3
@@ -71,4 +72,7 @@ public class Vare3
     public void setDato(String dato) {
         this.dato = dato;
     }
+
+
+
 }

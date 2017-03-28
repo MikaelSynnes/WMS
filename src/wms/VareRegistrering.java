@@ -27,14 +27,15 @@ import javafx.stage.Stage;
  * @author Kristian
  */
 public class VareRegistrering {
-    private final TableView<Vare2> table ;
-    private final ObservableList<Vare2> data ;
-            
+    private final TableView<Produkt> table ;
+    private final ObservableList<Produkt> data ;
+    private WMSConnection con;
     final HBox hb;
     
     public VareRegistrering(){
+        con = new WMSConnection();
         this.table = new TableView<>();
-        this.data = FXCollections.observableArrayList(new Vare2("1","3","2","A","B","C"));
+        this.data = FXCollections.observableArrayList(con.getProdukt());
         this.hb = new HBox();
     }
     
@@ -54,31 +55,33 @@ public class VareRegistrering {
         hbox.setSpacing(10);
  
         //table column
-        TableColumn vareNummer = setTableColumn("Varenummer", 100, "varenummer");
-        TableColumn ordreNummer = setTableColumn("Ordrenummer", 100, "ordrenummer");
+        TableColumn vareNummer = setTableColumn("Varenummer", 100, "VareId");
+        TableColumn navn = setTableColumn("Navn", 100, "Vnavn");
+        TableColumn kategori = setTableColumn("Kategori", 100, "Kategori");
         TableColumn antall = setTableColumn("Antall", 100, "antall");
         TableColumn mottaker = setTableColumn("Mottaker", 100, "mottaker");
         TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
         TableColumn dato = setTableColumn("Dato", 100, "dato");
  
         table.setItems(data);
-        table.getColumns().addAll(vareNummer, ordreNummer, antall, mottaker, plassering, dato);
+        table.getColumns().addAll(vareNummer, navn, kategori, antall, mottaker, plassering, dato);
  
         //button
         Button saveButton = new Button("Lagre");
         saveButton.setOnAction((ActionEvent e) -> {
-            data.add(new Vare2("2","2","2","save","save","save"));
+            
          });
         
         Button backButton = new Button("Tilbake");
+        backButton.setPrefSize(150, 20);
         backButton.setOnAction((ActionEvent b)->{
-            WMS w = new WMS();
+            WMStest w = new WMStest();
             w.start(stage);
         });
         
         //buttonbox
         hb.getChildren().addAll(backButton, saveButton);
-        hb.setAlignment(Pos.BASELINE_RIGHT);
+        hb.setAlignment(Pos.BASELINE_LEFT);
         hb.setSpacing(3);
  
         //footer

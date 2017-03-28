@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * @author Mikael
  */
-public class WMS extends Application {
+public class WMStest extends Application {
 
     GridPane root;
     ArrayList<Button> buttons;
@@ -38,7 +38,7 @@ public class WMS extends Application {
     tableTruck truck;
     tableAnsatt ansatt;
 
-    public WMS() {
+    public WMStest() {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();

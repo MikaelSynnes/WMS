@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 
 
-public class Innlogingsportal {
+public class Innlogingsportal  {
 
     WMSConnection wmsConnection = new WMSConnection();
 
@@ -69,15 +69,16 @@ public class Innlogingsportal {
 
 
 
-            btn.setOnAction((ActionEvent e) -> {
-                String value1 = userTextField.getText();
-                String value2 = passwordBox.getText();
-                if(value1.equals(userpass.getUser()) && value2.equals(userpass.getPass())) {
-                    WMS w = new WMS();
-                    w.start(primaryStage);
-                }
+        btn.setOnAction((ActionEvent e) -> {
+            String value1 = userTextField.getText();
+            String value2 = passwordBox.getText();
+            if(value1.equals(userpass.getUser()) && value2.equals(userpass.getPass())) {
+                WMS w = new WMS();
+                w.start(primaryStage);
+            }
 
-                });
+        });
+
 
 
 
@@ -92,4 +93,5 @@ public class Innlogingsportal {
 
         return scene;
     }
+
 }
