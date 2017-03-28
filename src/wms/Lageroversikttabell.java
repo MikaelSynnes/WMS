@@ -94,6 +94,7 @@ public class Lageroversikttabell {
         //tilbake kanpp
         final Button tilbake = new Button("Tilbake");
         tilbake.setPrefSize(150, 20);
+
         tilbake.setOnAction((ActionEvent e) ->{
             WMStest w = new WMStest();
             w.start(stage);
@@ -152,16 +153,9 @@ public class Lageroversikttabell {
         });
 
 
-
         lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
 
 
-
-       
-   
-
-
-        lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
 
         lhb.setSpacing(3);
 

@@ -73,7 +73,7 @@ public class Innlogingsportal  {
             String value1 = userTextField.getText();
             String value2 = passwordBox.getText();
             if(value1.equals(userpass.getUser()) && value2.equals(userpass.getPass())) {
-                WMS w = new WMS();
+                WMStest w = new WMStest();
                 w.start(primaryStage);
             }
 
