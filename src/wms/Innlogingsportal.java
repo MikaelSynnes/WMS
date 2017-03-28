@@ -17,11 +17,16 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import java.util.Scanner;
 
 
 
-public class Innlogingsportal {
+public class Innlogingsportal  {
 
+    WMSConnection wmsConnection = new WMSConnection();
+
+
+    Userpass userpass = new Userpass("howie", "howie");
 
     public Scene getScene(Stage primaryStage)
     {
@@ -42,7 +47,7 @@ public class Innlogingsportal {
         final Text actiontarget = new Text();
         grid.add(actiontarget, 1 ,6);
 
-        Scene scene = new Scene(grid, 400, 275);
+        Scene scene = new Scene(grid, 600, 600);
 
         Text scenetitle = new Text("Innlogging");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -61,18 +66,31 @@ public class Innlogingsportal {
         grid.add(passwordBox, 1, 2);
 
 
-        btn.setOnAction((ActionEvent e)->{
-            WMStest w = new WMStest();
-        w.start(primaryStage);});
+
+
+
+        btn.setOnAction((ActionEvent e) -> {
+            String value1 = userTextField.getText();
+            String value2 = passwordBox.getText();
+            if(value1.equals(userpass.getUser()) && value2.equals(userpass.getPass())) {
+                WMS w = new WMS();
+                w.start(primaryStage);
+            }
+
+        });
+
+
+
 
 
 
 
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setWidth(primaryStage.getWidth());
-        primaryStage.setHeight(primaryStage.getHeight());
+
+
 
         return scene;
     }
+
 }

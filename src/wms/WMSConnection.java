@@ -46,8 +46,8 @@ public class WMSConnection {
                 Ansatt ansatt = new Ansatt();
                 ansatt.setAnsattId(rs.getString("AnsattId"));
                 ansatt.setFornavn(rs.getString("Fornavn"));
-                ansatt.setEtternavn(rs.getString("Etternavn"));
-                ansatt.setStilling(rs.getString("stiling"));
+                ansatt.setStilling(rs.getString("Stilling"));
+                ansatt.setAvdeling(rs.getString("Avdeling"));
                 ansatt.setEpost(rs.getString("Epost"));
                 ansatt.setTelefon(rs.getString("Telefon"));
                 ansatte.add(ansatt);

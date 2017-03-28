@@ -10,73 +10,73 @@ package wms;
  * @author Haava
  */
 public class Ansatt {
-    private String AnsattId;
-    private String Fornavn;
-    private String Etternavn;
-    private String Stilling;
-    private String Epost;
-    private String Telefon;
+    private String ansattId;
+    private String fornavn;
+    private String stilling;
+    private String avdeling;
+    private String epost;
+    private String telefon;
 
-    public Ansatt(){}
-    
-    public Ansatt(String id, String fornavn, String etternavn, String stilling, String epost, String telefon) {
-        this.AnsattId = id;
-        this.Fornavn = fornavn;
-        this.Etternavn = etternavn;
-        this.Stilling = stilling;
-        this.Epost = epost;
-        this.Telefon = telefon;
+    public Ansatt() {
     }
 
-    
-    
-    public String getansattId() {
-        return AnsattId;
+    public Ansatt(String id, String fornavn, String avdeling, String stilling, String epost, String telefon) {
+        this.ansattId = id;
+        this.fornavn = fornavn;
+        this.stilling = stilling;
+        this.avdeling = avdeling;
+        this.epost = epost;
+        this.telefon = telefon;
     }
 
-    public void setAnsattId(String id) {
-        this.AnsattId = id;
+    public String getAnsattId() {
+        return ansattId;
+    }
+
+    public void setAnsattId(String ansattId) {
+        this.ansattId = ansattId;
     }
 
     public String getFornavn() {
-        return Fornavn;
+        return fornavn;
     }
 
     public void setFornavn(String fornavn) {
-        this.Fornavn = fornavn;
-    }
-
-    public String getEtternavn() {
-        return Etternavn;
-    }
-
-    public void setEtternavn(String etternavn) {
-        this.Etternavn = etternavn;
+        this.fornavn = fornavn;
     }
 
     public String getStilling() {
-        return Stilling;
+        return stilling;
     }
 
     public void setStilling(String stilling) {
-        this.Stilling = stilling;
+        this.stilling = stilling;
+    }
+
+    public String getAvdeling() {
+        return avdeling;
+    }
+
+    public void setAvdeling(String avdeling) {
+        this.avdeling = avdeling;
     }
 
     public String getEpost() {
-        return Epost;
+        return epost;
     }
 
     public void setEpost(String epost) {
-        this.Epost = epost;
+        this.epost = epost;
     }
 
     public String getTelefon() {
-        return Telefon;
+        return telefon;
     }
 
     public void setTelefon(String telefon) {
-        this.Telefon = telefon;
+        this.telefon = telefon;
     }
-    
-    
 }
+
+    
+    

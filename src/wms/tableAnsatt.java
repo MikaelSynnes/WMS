@@ -107,7 +107,7 @@ public class tableAnsatt{
         TableColumn stillingCol = new TableColumn("Stilling");
         stillingCol.setMinWidth(30);
         stillingCol.setCellValueFactory(
-            new PropertyValueFactory<Ansatt, String>("Stiling"));
+            new PropertyValueFactory<Ansatt, String>("Stilling"));
         stillingCol.setCellFactory(cellFactory);
         stillingCol.setOnEditCommit(
             new EventHandler<CellEditEvent<Ansatt, String>>() {

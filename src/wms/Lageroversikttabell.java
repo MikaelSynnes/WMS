@@ -66,32 +66,33 @@ public class Lageroversikttabell {
 
 
         TableColumn vareNummer = new TableColumn("Varenummer");
-        vareNummer.setMinWidth(110);
+        vareNummer.setMinWidth(125);
         vareNummer.setCellValueFactory(new PropertyValueFactory<>("varenummer"));
 
         TableColumn beskrivelse = new TableColumn("Beskrivelse");
-        beskrivelse.setMinWidth(110);
+        beskrivelse.setMinWidth(125);
         beskrivelse.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
         TableColumn type = new TableColumn("Type");
-        type.setMinWidth(110);
+        type.setMinWidth(125);
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
         TableColumn antall = new TableColumn("Antall");
-        antall.setMinWidth(110);
+        antall.setMinWidth(125);
         antall.setCellValueFactory(new PropertyValueFactory<>("antall"));
         TableColumn plassering = new TableColumn("Plassering");
-        plassering.setMinWidth(110);
+        plassering.setMinWidth(125);
         plassering.setCellValueFactory(new PropertyValueFactory<>("plassering"));
         TableColumn dato = new TableColumn("Dato");
-        dato.setMinWidth(110);
+        dato.setMinWidth(125);
         dato.setCellValueFactory(new PropertyValueFactory<>("dato"));
 
         table.setItems(data);
         table.getColumns().addAll(vareNummer, beskrivelse, type, antall, plassering, dato);
 
         final Button tilbake = new Button("Tilbake");
+        tilbake.setPrefSize(150, 20);
         tilbake.setOnAction((ActionEvent e) ->{
-        WMStest w = new WMStest();
-        w.start(stage); 
+            WMStest w = new WMStest();
+            w.start(stage);
         });
         hb.getChildren().addAll(tilbake);
 
@@ -119,18 +120,18 @@ public class Lageroversikttabell {
         final TextField addDato = new TextField();
         addDato.setPromptText("Dato");
         addDato.setMaxWidth(110);
+        final Button addButton = new Button("Legg til");
 
-
-        lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato);
+        lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
 
         final Button Search = new Button("Søk");
 
-        final Button addButton = new Button("Legg til");
+
         addButton.setOnAction((ActionEvent e) ->{
            // data.add
         });
 
-       hb.getChildren().addAll(addButton);
+       hb.getChildren().addAll();
 
         hb.setSpacing(3);
         hbox.setSpacing(5);
@@ -142,7 +143,7 @@ public class Lageroversikttabell {
         vbox.setPadding(new Insets(10, 10, 10, 10));
         vbox.getChildren().addAll(label, hbox, table, lhb, hb);
 
-        hb.setAlignment(Pos.BASELINE_RIGHT);
+        hb.setAlignment(Pos.BASELINE_LEFT);
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
 
         stage.setScene(scene);

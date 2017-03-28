@@ -55,13 +55,13 @@ public class VareRegistrering {
         hbox.setSpacing(10);
  
         //table column
-        TableColumn vareNummer = setTableColumn("Varenummer", 110, "VareId");
-        TableColumn navn = setTableColumn("Navn", 110, "Vnavn");
-        TableColumn kategori = setTableColumn("Kategori", 110, "Kategori");
-        TableColumn antall = setTableColumn("Antall", 110, "antall");
-        TableColumn mottaker = setTableColumn("Mottaker", 110, "mottaker");
-        TableColumn plassering = setTableColumn("Plassering", 110, "plassering");
-        TableColumn dato = setTableColumn("Dato", 110, "dato");
+        TableColumn vareNummer = setTableColumn("Varenummer", 100, "VareId");
+        TableColumn navn = setTableColumn("Navn", 100, "Vnavn");
+        TableColumn kategori = setTableColumn("Kategori", 100, "Kategori");
+        TableColumn antall = setTableColumn("Antall", 100, "antall");
+        TableColumn mottaker = setTableColumn("Mottaker", 100, "mottaker");
+        TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
+        TableColumn dato = setTableColumn("Dato", 100, "dato");
  
         table.setItems(data);
         table.getColumns().addAll(vareNummer, navn, kategori, antall, mottaker, plassering, dato);
@@ -73,6 +73,7 @@ public class VareRegistrering {
          });
         
         Button backButton = new Button("Tilbake");
+        backButton.setPrefSize(150, 20);
         backButton.setOnAction((ActionEvent b)->{
             WMStest w = new WMStest();
             w.start(stage);
@@ -80,7 +81,7 @@ public class VareRegistrering {
         
         //buttonbox
         hb.getChildren().addAll(backButton, saveButton);
-        hb.setAlignment(Pos.BASELINE_RIGHT);
+        hb.setAlignment(Pos.BASELINE_LEFT);
         hb.setSpacing(3);
  
         //footer
