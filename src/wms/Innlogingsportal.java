@@ -85,6 +85,7 @@ public class Innlogingsportal  {
 
 
 
+
         primaryStage.setScene(scene);
         primaryStage.show();
 
