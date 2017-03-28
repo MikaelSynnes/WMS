@@ -23,6 +23,9 @@ import java.util.Scanner;
 
 public class Innlogingsportal {
 
+    WMSConnection wmsConnection = new WMSConnection();
+
+
     Userpass userpass = new Userpass("howie", "howie");
 
     public Scene getScene(Stage primaryStage)
@@ -44,7 +47,7 @@ public class Innlogingsportal {
         final Text actiontarget = new Text();
         grid.add(actiontarget, 1 ,6);
 
-        Scene scene = new Scene(grid, 400, 275);
+        Scene scene = new Scene(grid, 600, 600);
 
         Text scenetitle = new Text("Innlogging");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -84,8 +87,8 @@ public class Innlogingsportal {
 
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setWidth(primaryStage.getWidth());
-        primaryStage.setHeight(primaryStage.getHeight());
+
+
 
         return scene;
     }
