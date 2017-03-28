@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * @author Mikael
  */
-public class WMS extends Application {
+public class WMS  {
 
     GridPane root;
     ArrayList<Button> buttons;
@@ -49,8 +49,8 @@ public class WMS extends Application {
 
     }
 
-    @Override
-    public void start(Stage primaryStage) {
+
+    public Scene getScene(Stage primaryStage) {
         buttons = new ArrayList<Button>();
 
         double minWidth;
@@ -154,15 +154,11 @@ public class WMS extends Application {
         primaryStage.show();
         
          */
-
+return scene;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+
+
 
     // Lager en knapp med posisjon pixels int,int og String tekst, Og hvor knappen skal lede til null (scene).
     public Button createButton(String title, Scene scene, Stage primaryStage) {

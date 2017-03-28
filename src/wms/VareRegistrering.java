@@ -75,8 +75,8 @@ public class VareRegistrering {
         Button backButton = new Button("Tilbake");
         backButton.setPrefSize(150, 20);
         backButton.setOnAction((ActionEvent b)->{
-            WMStest w = new WMStest();
-            w.start(stage);
+            WMS w = new WMS();
+            w.getScene(stage);
         });
         
         //buttonbox

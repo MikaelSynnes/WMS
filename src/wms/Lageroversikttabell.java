@@ -96,8 +96,8 @@ public class Lageroversikttabell {
         tilbake.setPrefSize(150, 20);
 
         tilbake.setOnAction((ActionEvent e) ->{
-            WMStest w = new WMStest();
-            w.start(stage);
+            WMS w = new WMS();
+            w.getScene(stage);
         });
         hb.getChildren().addAll(tilbake);
 

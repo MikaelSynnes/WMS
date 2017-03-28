@@ -60,7 +60,7 @@ public class tableAnsatt{
         tilbakeButton.setPrefSize(150, 20);
         tilbakeButton.setOnAction((ActionEvent event) -> {
             WMS w = new WMS();
-            w.start(stage);
+            w.getScene(stage);
         });
  
         table.setEditable(true);
