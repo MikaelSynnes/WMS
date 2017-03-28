@@ -23,7 +23,7 @@ import java.util.Scanner;
 
 public class Innlogingsportal {
 
-    Userpass userpass = new Userpass("806FxzcX85iE", "haavafl");
+    Userpass userpass = new Userpass("howie", "howie");
 
     public Scene getScene(Stage primaryStage)
     {
