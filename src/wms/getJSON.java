@@ -28,30 +28,46 @@ public class getJSON {
     public getJSON() {
         mapper = new ObjectMapper();
     }
-     public static void main(String[] args) throws Exception {
+
+    public static void main(String[] args) throws Exception {
         mapper = new ObjectMapper();
         Order order = new Order();
-        /*order.setCustomerID("customerID");
-        order.setEmployeeID("employeeID");
+        order.setCustomerID(1);
+        order.setEmployeeID(1);
         order.setOrderID(1);
         order.setInvoiceDate("invoiceDate");
-  
         order.setPlacedDate("placedDate");
-*/
+
         try {
             System.out.println(mapper.writeValueAsString(order));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         getOrder();
-        
+        //addOrder();
+
     }
 
     public static void getOrder() throws Exception {
-        String fetchString = httpGet("http://kaysl-logix.uials.no:8080/ordres");
+        String fetchString = httpGet("http://kaysl-logix.uials.no:8080/orders");
         try {
             Order ordre = mapper.readValue(fetchString, Order.class);
             System.out.println(ordre.getOrderID());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+    
+       public static void addOrder() throws Exception {
+        Order order = new Order();
+        order.setOrderID(1234);
+       
+        HashMap<String, String> paramMap = new HashMap<String, String>();
+        try {
+            System.out.println(mapper.writeValueAsString(order));
+            String body = mapper.writeValueAsString(order);
+            httpPost("http://localhost:8080/orders", body);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
