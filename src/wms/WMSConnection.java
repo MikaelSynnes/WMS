@@ -3,6 +3,7 @@ package wms;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,14 +27,25 @@ public class WMSConnection {
     
     private final String URL = "jdbc:sqlserver://haavafl-WMS1.uials.no;databaseName=WMS1;username=sa;password=passord123";
     private Connection con;
+    PreparedStatement addAnsattStatement;
+
     
     public WMSConnection(){
         try{
             con = DriverManager.getConnection(URL);
+            prepareStatements();
         } catch (SQLException ex) {
             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage()); 
         } 
+    }
+    
+    private void prepareStatements(){
+        try {
+            addAnsattStatement = con.prepareStatement("INSERT INTO Ansatt VALUES(?, ?, ?, ?, ?, ?)");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
     public List<Ansatt> getAnsatte(){
@@ -57,6 +69,25 @@ public class WMSConnection {
             System.out.println(ex.getMessage());
         } 
         return ansatte;
+    }
+    public void addAnsatte(Ansatt ansatt){
+         try {
+            addAnsattStatement.setInt(1, Integer.parseInt(ansatt.getAnsattId()));
+            addAnsattStatement.setString(2, ansatt.getFornavn());
+            addAnsattStatement.setString(3, ansatt.getStilling());
+            addAnsattStatement.setString(4, ansatt.getAvdeling());
+            addAnsattStatement.setString(5, ansatt.getEpost());
+            addAnsattStatement.setInt(6, Integer.parseInt(ansatt.getTelefon()));
+            int updates = addAnsattStatement.executeUpdate();
+            /*
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("INSERT INTO dbo.Ansatt (AnsattId,Fornavn,Stilling,Avdeling,Epost,Telefon)") + "VALUES (?,?,?,?,?)";
+            while(rs.next()){}
+*/
+         }catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+    }
     }
     public List<Produkt> getProdukt() {
         List<Produkt> produktList = null;
