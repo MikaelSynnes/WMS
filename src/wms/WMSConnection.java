@@ -23,26 +23,26 @@ import java.util.logging.Logger;
  * @author Haava
  */
 public class WMSConnection {
-    
+
     private final String URL = "jdbc:sqlserver://haavafl-WMS1.uials.no;databaseName=WMS1;username=sa;password=passord123";
     private Connection con;
-    
-    public WMSConnection(){
-        try{
+
+    public WMSConnection() {
+        try {
             con = DriverManager.getConnection(URL);
         } catch (SQLException ex) {
             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage()); 
-        } 
+            System.out.println(ex.getMessage());
+        }
     }
-    
-    public List<Ansatt> getAnsatte(){
+
+    public List<Ansatt> getAnsatte() {
         List<Ansatt> ansatte = null;
         try {
             Statement s = con.createStatement();
             ResultSet rs = s.executeQuery("SELECT * FROM Ansatt");
             ansatte = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 Ansatt ansatt = new Ansatt();
                 ansatt.setAnsattId(rs.getString("AnsattId"));
                 ansatt.setFornavn(rs.getString("Fornavn"));
@@ -55,16 +55,17 @@ public class WMSConnection {
         } catch (SQLException ex) {
             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
-        } 
+        }
         return ansatte;
     }
+
     public List<Produkt> getProdukt() {
         List<Produkt> produktList = null;
         try {
-             Statement s = con.createStatement();
+            Statement s = con.createStatement();
             ResultSet rs = s.executeQuery("SELECT * FROM Vare");
             produktList = new ArrayList<>();
-            while(rs.next()) {
+            while (rs.next()) {
                 Produkt vare = new Produkt();
                 vare.setVareId(rs.getString("VareId"));
                 vare.setVnavn(rs.getString("Vnavn"));
@@ -72,20 +73,21 @@ public class WMSConnection {
                 vare.setDato(rs.getString("Dato"));
                 produktList.add(vare);
             }
-            
-        }catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
-        } 
+        }
         return produktList;
     }
-        public List<Truck> getTruck(){
+
+    public List<Truck> getTruck() {
         List<Truck> truckList = null;
         try {
             Statement s = con.createStatement();
             ResultSet rs = s.executeQuery("SELECT * FROM Truck");
             truckList = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 Truck truck = new Truck();
                 truck.setTruckId(rs.getString("TruckId"));
                 truck.setAnsvarlig(rs.getString("Ansvarlig"));
@@ -97,6 +99,33 @@ public class WMSConnection {
         } catch (SQLException ex) {
             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
-        } 
+        }
         return truckList;
-}}
+    }
+
+    public List<Vare3> getVare3() {
+        List<Vare3> vare3List = null;
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Vare");
+            vare3List = new ArrayList<>();
+            while (rs.next()) {
+                Vare3 vare3 = new Vare3();
+                vare3.setVareNummer(rs.getString("Varenummer"));
+                vare3.setBeskrivelse(rs.getString("Beskrivelse"));
+                vare3.setType(rs.getString("Type"));
+                vare3.setAntall(rs.getString("Antall"));
+                vare3.setPlassering(rs.getString("Plassering"));
+                vare3.setDato(rs.getString("Dato"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return vare3List;
+
+
+    }
+}
+

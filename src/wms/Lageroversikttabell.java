@@ -35,15 +35,17 @@ public class Lageroversikttabell {
 
     private final TableView<Vare3> table;
     private final ObservableList<Vare3> data;
+    private WMSConnection connection;
     final HBox hb;
     final HBox hbox;
     final HBox lhb;
 
     public Lageroversikttabell() {
+        connection = new WMSConnection();
         this.hb = new HBox();
         this.hbox = new HBox();
         this.lhb = new HBox();
-        this.data = FXCollections.observableArrayList(new Vare3("A", "B", "C", "D", "E", "F"));
+        this.data = FXCollections.observableArrayList(connection.getVare3());
         this.table = new TableView<>();
     }
 

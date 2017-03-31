@@ -23,10 +23,16 @@ import java.util.Scanner;
 
 public class Innlogingsportal  {
 
-    WMSConnection wmsConnection = new WMSConnection();
+    private WMSConnection wmsConnection;
+    private Userpass userpass;
+
+    public Innlogingsportal() {
+        wmsConnection = new WMSConnection();
+        this.userpass = new Userpass("howie", "howie");
+    }
 
 
-    Userpass userpass = new Userpass("howie", "howie");
+
 
     public Scene getScene(Stage primaryStage)
     {
