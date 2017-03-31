@@ -107,7 +107,7 @@ public class WMSConnection {
         List<Vare3> vare3List = null;
         try {
             Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM Vare");
+            ResultSet rs = s.executeQuery("SELECT * FROM Vare3");
             vare3List = new ArrayList<>();
             while (rs.next()) {
                 Vare3 vare3 = new Vare3();
@@ -126,6 +126,47 @@ public class WMSConnection {
         return vare3List;
 
 
+    }
+
+    public String getPassword() {
+
+        String password = null;
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM User");
+
+            while (rs.next()) {
+                Userpass userpass = new Userpass();
+                userpass.setPass(rs.getString("Password"));
+                password = userpass.getPass();
+
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return password;
+    }
+
+
+    public String getUser() {
+        String username = null;
+
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM User");
+
+            while (rs.next()) {
+                Userpass userpass = new Userpass();
+                userpass.setUser(rs.getString("Username"));
+                username = userpass.getUser();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return username;
     }
 }
 

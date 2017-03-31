@@ -28,7 +28,8 @@ public class Innlogingsportal  {
 
     public Innlogingsportal() {
         wmsConnection = new WMSConnection();
-        this.userpass = new Userpass("howie", "howie");
+        this.userpass = new Userpass();
+
     }
 
 
@@ -78,7 +79,7 @@ public class Innlogingsportal  {
         btn.setOnAction((ActionEvent e) -> {
             String value1 = userTextField.getText();
             String value2 = passwordBox.getText();
-            if(value1.equals(userpass.getUser()) && value2.equals(userpass.getPass())) {
+            if(value1.equals(wmsConnection.getUser()) && value2.equals(wmsConnection.getPassword())) {
                 WMS w = new WMS();
                 w.getScene(primaryStage);
             }
