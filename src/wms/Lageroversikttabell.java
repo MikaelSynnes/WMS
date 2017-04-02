@@ -33,17 +33,19 @@ import javafx.stage.Stage;
 public class Lageroversikttabell {
 
 
-    private final TableView<Vare3> table;
-    private final ObservableList<Vare3> data;
+    private final TableView<Produkt> table;
+    private final ObservableList<Produkt> data;
+    private final WMSConnection con;
     final HBox hb;
     final HBox hbox;
     final HBox lhb;
 
     public Lageroversikttabell() {
+        this.con = new WMSConnection();
         this.hb = new HBox();
         this.hbox = new HBox();
         this.lhb = new HBox();
-        this.data = FXCollections.observableArrayList(new Vare3("A", "B", "C", "D", "E", "F"));
+        this.data = FXCollections.observableArrayList(con.getProdukt());
         this.table = new TableView<>();
     }
 
@@ -70,20 +72,24 @@ public class Lageroversikttabell {
         //kollonner
         TableColumn vareNummer = new TableColumn("Varenummer");
         vareNummer.setMinWidth(125);
-        vareNummer.setCellValueFactory(new PropertyValueFactory<>("varenummer"));
+        vareNummer.setCellValueFactory(new PropertyValueFactory<>("vareId"));
 
         TableColumn beskrivelse = new TableColumn("Beskrivelse");
         beskrivelse.setMinWidth(125);
-        beskrivelse.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
+        beskrivelse.setCellValueFactory(new PropertyValueFactory<>("Vnavn"));
+
         TableColumn type = new TableColumn("Type");
         type.setMinWidth(125);
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        TableColumn antall = new TableColumn("Antall");
+
+        TableColumn antall = new TableColumn("Kategori");
         antall.setMinWidth(125);
-        antall.setCellValueFactory(new PropertyValueFactory<>("antall"));
+        antall.setCellValueFactory(new PropertyValueFactory<>("kategori"));
+
         TableColumn plassering = new TableColumn("Plassering");
         plassering.setMinWidth(125);
         plassering.setCellValueFactory(new PropertyValueFactory<>("plassering"));
+
         TableColumn dato = new TableColumn("Dato");
         dato.setMinWidth(125);
         dato.setCellValueFactory(new PropertyValueFactory<>("dato"));
@@ -132,7 +138,7 @@ public class Lageroversikttabell {
 
 
 
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
+      /*  addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 data.add(new Vare3(
@@ -150,7 +156,7 @@ public class Lageroversikttabell {
                 addPlassering.clear();
                 addDato.clear();
             }
-        });
+        });*/
 
 
         lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
