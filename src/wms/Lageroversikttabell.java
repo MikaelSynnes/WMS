@@ -70,29 +70,13 @@ public class Lageroversikttabell {
         table.setEditable(true);
 
         //kollonner
-        TableColumn vareNummer = new TableColumn("Varenummer");
-        vareNummer.setMinWidth(125);
-        vareNummer.setCellValueFactory(new PropertyValueFactory<>("vareId"));
+        TableColumn vareNummer = setTableColumn("Varenummer", 125, "vareId");
+        TableColumn beskrivelse = setTableColumn("Beskrivelse", 125, "Vnavn");
+        TableColumn type = setTableColumn("Type",125,"type");
+        TableColumn antall = setTableColumn("Kategori",125,"kategori");
+        TableColumn plassering = setTableColumn("Plassering",125,"plassering");
+        TableColumn dato = setTableColumn("Dato",125,"dato");
 
-        TableColumn beskrivelse = new TableColumn("Beskrivelse");
-        beskrivelse.setMinWidth(125);
-        beskrivelse.setCellValueFactory(new PropertyValueFactory<>("Vnavn"));
-
-        TableColumn type = new TableColumn("Type");
-        type.setMinWidth(125);
-        type.setCellValueFactory(new PropertyValueFactory<>("type"));
-
-        TableColumn antall = new TableColumn("Kategori");
-        antall.setMinWidth(125);
-        antall.setCellValueFactory(new PropertyValueFactory<>("kategori"));
-
-        TableColumn plassering = new TableColumn("Plassering");
-        plassering.setMinWidth(125);
-        plassering.setCellValueFactory(new PropertyValueFactory<>("plassering"));
-
-        TableColumn dato = new TableColumn("Dato");
-        dato.setMinWidth(125);
-        dato.setCellValueFactory(new PropertyValueFactory<>("dato"));
 
         table.setItems(data);
         table.getColumns().addAll(vareNummer, beskrivelse, type, antall, plassering, dato);
@@ -185,5 +169,19 @@ public class Lageroversikttabell {
 
         return scene;
     }
+    /**
+     * create tablecolumn for table
+     * @param title, title of column
+     * @param minwidth, width of column
+     * @param value, same as in Vare class variable
+     * @return tblCol, a table column
+     */
+    public TableColumn setTableColumn(String title, int minwidth, String value){
+        TableColumn tblCol = new TableColumn(title);
+        tblCol.setMinWidth(minwidth);
+        tblCol.setCellValueFactory(
+                new PropertyValueFactory<>(value));
 
+        return tblCol;
+    }
 }
