@@ -348,6 +348,7 @@ public class tableAnsatt
         }
     }
 
+    // TODO: Abstrahere ut søkefunksjonen i egen klasse
     private void search(String searchStr)
     {
         ObservableList<Ansatt> foundItems = FXCollections.observableArrayList();

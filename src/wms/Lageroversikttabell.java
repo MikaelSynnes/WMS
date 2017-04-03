@@ -58,12 +58,12 @@ public class Lageroversikttabell {
         label.setFont(new Font("Arial", 20));
 
 
-        // Søk knapp
-        final Button Btn1 = new Button ("Søk");
         TextField textField = new TextField();
         textField.setMaxWidth(130);
+        textField.setOnKeyReleased(event -> search(textField.getText()));
 
-
+// Knapp for tilbakestilling av søk
+        Button resetButton = new Button("Tilbakestill søk");
 
         table.setEditable(true);
 
@@ -161,7 +161,7 @@ public class Lageroversikttabell {
 
         hbox.setSpacing(5);
 
-        hbox.getChildren().addAll(textField, Btn1);
+        hbox.getChildren().addAll(textField, resetButton);
 
         final VBox vbox = new VBox();
         vbox.setSpacing (5);
@@ -178,6 +178,38 @@ public class Lageroversikttabell {
         stage.setHeight(stage.getHeight());
 
         return scene;
+    }
+
+    // TODO: Abstrahere ut søkefunksjonen i egen klasse
+    private void search(String searchStr)
+    {
+        ObservableList<Vare3> foundItems = FXCollections.observableArrayList();
+        for (Vare3 vare : data)
+        {
+            if ((vare.getBeskrivelse().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+            else if ((vare.getPlassering().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+            else if ((vare.getType().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+            else if ((vare.getDato().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+        }
+
+        table.setItems(foundItems);
+
+        if (foundItems.isEmpty())
+        {
+            table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
+        }
     }
 
 }

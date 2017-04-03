@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 
 /**
  * Class representing an object used for searching through tables.
+ *
+ * DENNE KLASSEN SKAL FORHÅPENTLIGVIS TA SEG AV ALT AV SØK NÅR PROSJEKTET ER FERDIG.
  */
 public class Search
 {
