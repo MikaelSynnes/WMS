@@ -27,7 +27,8 @@ public class WMSConnection {
     
     private final String URL = "jdbc:sqlserver://haavafl-WMS1.uials.no;databaseName=WMS1;username=sa;password=passord123";
     private Connection con;
-    PreparedStatement addAnsattStatement;
+    private PreparedStatement addAnsattStatement;
+    private PreparedStatement addTruckStatement;
 
     
     public WMSConnection(){
@@ -43,6 +44,7 @@ public class WMSConnection {
     private void prepareStatements(){
         try {
             addAnsattStatement = con.prepareStatement("INSERT INTO Ansatt VALUES(?, ?, ?, ?, ?, ?)");
+            addTruckStatement = con.prepareStatement("INSERT INTO Truck (TruckId, Ansvarlig, Operativ, Model, Neste_service) VALUES(?, ?, ?, ?, ?)");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -79,11 +81,7 @@ public class WMSConnection {
             addAnsattStatement.setString(5, ansatt.getEpost());
             addAnsattStatement.setInt(6, Integer.parseInt(ansatt.getTelefon()));
             int updates = addAnsattStatement.executeUpdate();
-            /*
-            Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("INSERT INTO dbo.Ansatt (AnsattId,Fornavn,Stilling,Avdeling,Epost,Telefon)") + "VALUES (?,?,?,?,?)";
-            while(rs.next()){}
-*/
+            
          }catch (SQLException ex) {
             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
@@ -130,4 +128,20 @@ public class WMSConnection {
             System.out.println(ex.getMessage());
         } 
         return truckList;
-}}
+}
+                    public void addTruck(Truck truck){
+         try {
+           
+            addTruckStatement.setInt(1, Integer.parseInt(truck.getTruckId()));
+            addTruckStatement.setString(2, truck.getAnsvarlig());
+            addTruckStatement.setString(3, truck.getOperativ());
+            addTruckStatement.setString(4, truck.getModel());
+            addTruckStatement.setString(5, truck.getNeste_service());
+            int updates = addTruckStatement.executeUpdate();
+
+         }catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+    }
+    }
+}

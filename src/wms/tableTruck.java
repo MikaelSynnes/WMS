@@ -48,15 +48,23 @@ public tableTruck(){
  
         Header head = new Header("Truck Tabell");
         Label label = head.createHeader();
-        
+
         Label sokLabel = new Label("Søk: ");
         sokLabel.setFont(Font.font("Arial", 15));
-        TextField sokFunksjon = new TextField ();
-        
+        TextField sokFunksjon = new TextField();
+        sokFunksjon.setOnKeyReleased(event -> search(sokFunksjon.getText()));
+        Button resetButton = new Button("Tilbakestill søk");
+        resetButton.setOnAction((ActionEvent event) ->
+        {
+            table.setItems(data);
+            sokFunksjon.clear();
+            sokFunksjon.requestFocus();
+        });
+
         Button tilbakeButton = new Button();
         tilbakeButton.setText("Tilbake");
         tilbakeButton.setPrefSize(150, 20);
-        tilbakeButton.setOnAction((ActionEvent event) -> {
+        tilbakeButton.setOnAction((ActionEvent event) ->{
             WMS w = new WMS();
             w.getScene(stage);
         });
@@ -180,12 +188,14 @@ public tableTruck(){
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                data.add(new Truck(
+                Truck truck = new Truck( 
                         addTruckNr.getText(),
                         addAnsvarlig.getText(),
                         addOperativ.getText(),
                         addModel.getText(),
-                        addService.getText()));
+                        addService.getText());
+                        data.add(truck);
+                        con.addTruck(truck);
                 addTruckNr.clear();
                 addAnsvarlig.clear();
                 addOperativ.clear();
@@ -281,6 +291,41 @@ public tableTruck(){
  
         private String getString() {
             return getItem() == null ? "" : getItem().toString();
+        }
+    }
+        private void search(String searchStr)
+    {
+        ObservableList<Truck> foundItems = FXCollections.observableArrayList();
+        for (Truck truck : data)
+        {
+            if ((truck.getTruckId().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            {
+                foundItems.add(truck);
+            }
+            else if ((truck.getAnsvarlig().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            {
+                foundItems.add(truck);
+            }
+            else if ((truck.getOperativ().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            {
+                foundItems.add(truck);
+            }
+            else if ((truck.getModel().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            {
+                foundItems.add(truck);
+            }
+            else if ((truck.getNeste_service().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            {
+                foundItems.add(truck);
+            }
+          
+        }
+
+        table.setItems(foundItems);
+
+        if (foundItems.isEmpty())
+        {
+            table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
         }
     }
 }

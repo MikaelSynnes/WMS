@@ -223,15 +223,16 @@ public class tableAnsatt
         addButton.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
-            public void handle(ActionEvent e)
-            {
-                data.add(new Ansatt(
+            public void handle(ActionEvent e) {
+                Ansatt ansatt = new Ansatt(
                         addAnsattNr.getText(),
                         addNavn.getText(),
                         addStilling.getText(),
                         addAvdeling.getText(),
                         addEpost.getText(),
-                        addTelefon.getText()));
+                        addTelefon.getText());
+                data.add(ansatt);
+                con.addAnsatte(ansatt);
                 addAnsattNr.clear();
                 addNavn.clear();
                 addStilling.clear();
@@ -354,7 +355,11 @@ public class tableAnsatt
         ObservableList<Ansatt> foundItems = FXCollections.observableArrayList();
         for (Ansatt ansatt : data)
         {
-            if ((ansatt.getFornavn().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
+            if ((ansatt.getAnsattId().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
+            {
+                foundItems.add(ansatt);
+            }
+            else if ((ansatt.getFornavn().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
             {
                 foundItems.add(ansatt);
             }
