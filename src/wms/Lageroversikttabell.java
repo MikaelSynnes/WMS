@@ -34,7 +34,7 @@ public class Lageroversikttabell {
 
 
     private final TableView<Vare3> table;
-    private final ObservableList<Vare3> data;
+    //private final ObservableList<Vare3> data;
     private WMSConnection connection;
     final HBox hb;
     final HBox hbox;
@@ -45,7 +45,7 @@ public class Lageroversikttabell {
         this.hb = new HBox();
         this.hbox = new HBox();
         this.lhb = new HBox();
-        this.data = FXCollections.observableArrayList(connection.getVare3());
+        //this.data = FXCollections.observableArrayList(connection.getVare3());
         this.table = new TableView<>();
     }
 
@@ -90,7 +90,7 @@ public class Lageroversikttabell {
         dato.setMinWidth(125);
         dato.setCellValueFactory(new PropertyValueFactory<>("dato"));
 
-        table.setItems(data);
+      //  table.setItems(data);
         table.getColumns().addAll(vareNummer, beskrivelse, type, antall, plassering, dato);
 
         //tilbake kanpp
@@ -133,7 +133,7 @@ public class Lageroversikttabell {
         final Button addButton = new Button("Legg til");
 
 
-
+/**
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -153,7 +153,7 @@ public class Lageroversikttabell {
                 addDato.clear();
             }
         });
-
+**/
 
         lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
 

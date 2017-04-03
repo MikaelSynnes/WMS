@@ -128,16 +128,17 @@ public class WMSConnection {
 
     }
 
+
     public String getPassword() {
 
         String password = null;
         try {
             Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM User");
+            ResultSet rs = s.executeQuery("SELECT * FROM Bruker");
 
             while (rs.next()) {
                 Userpass userpass = new Userpass();
-                userpass.setPass(rs.getString("Password"));
+                userpass.setPass(rs.getString("Passord"));
                 password = userpass.getPass();
 
 
@@ -155,11 +156,11 @@ public class WMSConnection {
 
         try {
             Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM User");
+            ResultSet rs = s.executeQuery("SELECT * FROM Bruker");
 
             while (rs.next()) {
                 Userpass userpass = new Userpass();
-                userpass.setUser(rs.getString("Username"));
+                userpass.setUser(rs.getString("BrukerNavn"));
                 username = userpass.getUser();
             }
         } catch (SQLException ex) {
