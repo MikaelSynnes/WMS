@@ -64,7 +64,7 @@ public class Lageroversikttabell
 
         TextField textField = new TextField();
         textField.setMaxWidth(130);
-        textField.setOnKeyReleased(event -> search(textField.getText()));
+        //textField.setOnKeyReleased(event -> search(textField.getText()));
 
         // Knapp for tilbakestilling av søk
         Button resetButton = new Button("Tilbakestill søk");
@@ -199,7 +199,7 @@ public class Lageroversikttabell
     }
 
 
-    // TODO: Abstrahere ut søkefunksjonen i egen klasse
+  /*  // TODO: Abstrahere ut søkefunksjonen i egen klasse
     private void search(String searchStr)
     {
         ObservableList<Vare3> foundItems = FXCollections.observableArrayList();
@@ -229,6 +229,6 @@ public class Lageroversikttabell
         {
             table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
         }
-    }
+    }*/
 
 }
