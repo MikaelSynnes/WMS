@@ -130,4 +130,70 @@ public class WMSConnection {
             System.out.println(ex.getMessage());
         } 
         return truckList;
-}}
+
+        }
+    public List<Ordre> getOrdre(){
+         List<Ordre> ordreList = null;
+         try{
+             Statement s = con.createStatement();
+             ResultSet rs = s.executeQuery("SELECT * FROM Ordre");
+             ordreList = new ArrayList<>();
+             while (rs.next()){
+                 Ordre ordre = new Ordre("","","","","","");
+                 ordre.setOrdreId(rs.getString("OrdreId"));
+                 ordre.setButikk(rs.getString("butikk"));
+                 ordre.setVekt(rs.getString("Vekt"));
+                 ordre.setDato(rs.getString("Dato"));
+                 ordre.setAntall(rs.getString("Antall"));
+                 ordre.setPlassering(rs.getString("Plassering"));
+                 ordreList.add(ordre);
+
+             }
+         }catch (SQLException ex){
+             Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+             System.out.println(ex.getMessage());
+         }
+         return ordreList;
+    }
+    public String getPassword() {
+
+        String password = null;
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Bruker");
+
+            while (rs.next()) {
+                Userpass userpass = new Userpass();
+                userpass.setPass(rs.getString("Passord"));
+                password = userpass.getPass();
+
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return password;
+    }
+
+
+    public String getUser() {
+        String username = null;
+
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Bruker");
+
+            while (rs.next()) {
+                Userpass userpass = new Userpass();
+                userpass.setUser(rs.getString("BrukerNavn"));
+                username = userpass.getUser();
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return username;
+    }
+}

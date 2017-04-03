@@ -33,18 +33,21 @@ public class Lageroversikttabell
 {
 
 
-    private final TableView<Vare3> table;
-    private final ObservableList<Vare3> data;
+    private final TableView<Produkt> table;
+    private final ObservableList<Produkt> data;
+    private final WMSConnection con;
     final HBox hb;
     final HBox hbox;
     final HBox lhb;
 
-    public Lageroversikttabell()
-    {
+
+    public Lageroversikttabell() {
+        this.con = new WMSConnection();
+
         this.hb = new HBox();
         this.hbox = new HBox();
         this.lhb = new HBox();
-        this.data = FXCollections.observableArrayList(new Vare3("A", "B", "C", "D", "E", "F"));
+        this.data = FXCollections.observableArrayList(con.getProdukt());
         this.table = new TableView<>();
     }
 
@@ -74,25 +77,13 @@ public class Lageroversikttabell
         table.setEditable(true);
 
         //kollonner
-        TableColumn vareNummer = new TableColumn("Varenummer");
-        vareNummer.setMinWidth(125);
-        vareNummer.setCellValueFactory(new PropertyValueFactory<>("varenummer"));
+        TableColumn vareNummer = setTableColumn("Varenummer", 125, "vareId");
+        TableColumn beskrivelse = setTableColumn("Beskrivelse", 125, "Vnavn");
+        TableColumn type = setTableColumn("Type",125,"type");
+        TableColumn antall = setTableColumn("Kategori",125,"kategori");
+        TableColumn plassering = setTableColumn("Plassering",125,"plassering");
+        TableColumn dato = setTableColumn("Dato",125,"dato");
 
-        TableColumn beskrivelse = new TableColumn("Beskrivelse");
-        beskrivelse.setMinWidth(125);
-        beskrivelse.setCellValueFactory(new PropertyValueFactory<>("beskrivelse"));
-        TableColumn type = new TableColumn("Type");
-        type.setMinWidth(125);
-        type.setCellValueFactory(new PropertyValueFactory<>("type"));
-        TableColumn antall = new TableColumn("Antall");
-        antall.setMinWidth(125);
-        antall.setCellValueFactory(new PropertyValueFactory<>("antall"));
-        TableColumn plassering = new TableColumn("Plassering");
-        plassering.setMinWidth(125);
-        plassering.setCellValueFactory(new PropertyValueFactory<>("plassering"));
-        TableColumn dato = new TableColumn("Dato");
-        dato.setMinWidth(125);
-        dato.setCellValueFactory(new PropertyValueFactory<>("dato"));
 
         table.setItems(data);
         table.getColumns().addAll(vareNummer, beskrivelse, type, antall, plassering, dato);
@@ -138,8 +129,12 @@ public class Lageroversikttabell
         final Button addButton = new Button("Legg til");
 
 
-        addButton.setOnAction(new EventHandler<ActionEvent>()
+
+
+      /*  addButton.setOnAction(new EventHandler<ActionEvent>() {
+
         {
+
             @Override
             public void handle(ActionEvent e)
             {
@@ -158,7 +153,7 @@ public class Lageroversikttabell
                 addPlassering.clear();
                 addDato.clear();
             }
-        });
+        });*/
 
 
         lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
@@ -186,6 +181,23 @@ public class Lageroversikttabell
 
         return scene;
     }
+
+    /**
+     * create tablecolumn for table
+     * @param title, title of column
+     * @param minwidth, width of column
+     * @param value, same as in Vare class variable
+     * @return tblCol, a table column
+     */
+    public TableColumn setTableColumn(String title, int minwidth, String value){
+        TableColumn tblCol = new TableColumn(title);
+        tblCol.setMinWidth(minwidth);
+        tblCol.setCellValueFactory(
+                new PropertyValueFactory<>(value));
+
+        return tblCol;
+    }
+
 
     // TODO: Abstrahere ut søkefunksjonen i egen klasse
     private void search(String searchStr)
