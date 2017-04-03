@@ -353,12 +353,33 @@ public class tableAnsatt
         ObservableList<Ansatt> foundItems = FXCollections.observableArrayList();
         for (Ansatt ansatt : data)
         {
-            if (ansatt.getFornavn().contains(searchStr) && !data.contains(ansatt))
+            if ((ansatt.getFornavn().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
+            {
+                foundItems.add(ansatt);
+            }
+            else if ((ansatt.getAvdeling().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
+            {
+                foundItems.add(ansatt);
+            }
+            else if ((ansatt.getEpost().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
+            {
+                foundItems.add(ansatt);
+            }
+            else if ((ansatt.getStilling().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
+            {
+                foundItems.add(ansatt);
+            }
+            else if ((ansatt.getTelefon().toLowerCase().contains(searchStr)) && (!foundItems.contains(ansatt)))
             {
                 foundItems.add(ansatt);
             }
         }
 
         table.setItems(foundItems);
+
+        if (foundItems.isEmpty())
+        {
+            table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
+        }
     }
 }
