@@ -46,6 +46,7 @@ public class Innlogingsportal  {
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         Button btn = new Button("Logg inn");
+        btn.setDefaultButton(true);
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(btn);
@@ -65,6 +66,7 @@ public class Innlogingsportal  {
 
         TextField userTextField = new TextField();
         grid.add(userTextField, 1, 1);
+        userTextField.requestFocus();
 
         Label password = new Label("Passord:");
         grid.add(password, 0 ,2);
