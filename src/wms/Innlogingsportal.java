@@ -85,6 +85,10 @@ public class Innlogingsportal  {
                 WMS w = new WMS();
                 w.getScene(primaryStage);
             }
+            else{
+                Label l = new Label("Wrong username or password");
+                grid.add(l, 1, 3);
+            }
 
         });
 
