@@ -8,10 +8,12 @@ public class Userpass
     String pass;
     String user;
 
-    public Userpass(String pass, String user) {
-        this.pass = pass;
-        this.user = user;
+    public Userpass()
+    {
+
     }
+
+
 
     public String getPass() {
         return pass;
