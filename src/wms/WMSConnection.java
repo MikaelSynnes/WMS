@@ -155,4 +155,45 @@ public class WMSConnection {
          }
          return ordreList;
     }
+    public String getPassword() {
+
+        String password = null;
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Bruker");
+
+            while (rs.next()) {
+                Userpass userpass = new Userpass();
+                userpass.setPass(rs.getString("Passord"));
+                password = userpass.getPass();
+
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return password;
+    }
+
+
+    public String getUser() {
+        String username = null;
+
+        try {
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Bruker");
+
+            while (rs.next()) {
+                Userpass userpass = new Userpass();
+                userpass.setUser(rs.getString("BrukerNavn"));
+                username = userpass.getUser();
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return username;
+    }
 }
