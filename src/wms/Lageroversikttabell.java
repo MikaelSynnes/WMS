@@ -29,8 +29,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-
-public class Lageroversikttabell {
+public class Lageroversikttabell
+{
 
 
     private final TableView<Produkt> table;
@@ -40,8 +40,10 @@ public class Lageroversikttabell {
     final HBox hbox;
     final HBox lhb;
 
+
     public Lageroversikttabell() {
         this.con = new WMSConnection();
+
         this.hb = new HBox();
         this.hbox = new HBox();
         this.lhb = new HBox();
@@ -50,22 +52,27 @@ public class Lageroversikttabell {
     }
 
 
-    public Scene getScene(Stage stage) {
+    public Scene getScene(Stage stage)
+    {
         Scene scene = new Scene(new Group());
         stage.setTitle("Lager oversikt");
-
 
 
         final Label label = new Label("Lager oversikt");
         label.setFont(new Font("Arial", 20));
 
 
-        // Søk knapp
-        final Button Btn1 = new Button ("Søk");
         TextField textField = new TextField();
         textField.setMaxWidth(130);
+        //textField.setOnKeyReleased(event -> search(textField.getText()));
 
-
+        // Knapp for tilbakestilling av søk
+        Button resetButton = new Button("Tilbakestill søk");
+        resetButton.setOnAction((ActionEvent event) ->
+        {
+            table.setItems(data);
+            textField.clear();
+        });
 
         table.setEditable(true);
 
@@ -85,7 +92,8 @@ public class Lageroversikttabell {
         final Button tilbake = new Button("Tilbake");
         tilbake.setPrefSize(150, 20);
 
-        tilbake.setOnAction((ActionEvent e) ->{
+        tilbake.setOnAction((ActionEvent e) ->
+        {
             WMS w = new WMS();
             w.getScene(stage);
         });
@@ -111,8 +119,8 @@ public class Lageroversikttabell {
         final TextField addPlassering = new TextField();
         addPlassering.setPromptText("Plassering");
         addPlassering.setMaxWidth(110);
-      
-      
+
+
         final TextField addDato = new TextField();
         addDato.setPromptText("Dato");
         addDato.setMaxWidth(110);
@@ -122,9 +130,14 @@ public class Lageroversikttabell {
 
 
 
+
       /*  addButton.setOnAction(new EventHandler<ActionEvent>() {
+
+        {
+
             @Override
-            public void handle(ActionEvent e) {
+            public void handle(ActionEvent e)
+            {
                 data.add(new Vare3(
                         addVareNummer.getText(),
                         addBeskrivelse.getText(),
@@ -146,15 +159,14 @@ public class Lageroversikttabell {
         lhb.getChildren().addAll(addVareNummer, addBeskrivelse, addType, addAntall, addPlassering, addDato, addButton);
 
 
-
         lhb.setSpacing(3);
 
         hbox.setSpacing(5);
 
-        hbox.getChildren().addAll(textField, Btn1);
+        hbox.getChildren().addAll(textField, resetButton);
 
         final VBox vbox = new VBox();
-        vbox.setSpacing (5);
+        vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 10, 10, 10));
         vbox.getChildren().addAll(label, hbox, table, lhb, hb);
 
@@ -169,6 +181,7 @@ public class Lageroversikttabell {
 
         return scene;
     }
+
     /**
      * create tablecolumn for table
      * @param title, title of column
@@ -184,4 +197,38 @@ public class Lageroversikttabell {
 
         return tblCol;
     }
+
+
+  /*  // TODO: Abstrahere ut søkefunksjonen i egen klasse
+    private void search(String searchStr)
+    {
+        ObservableList<Vare3> foundItems = FXCollections.observableArrayList();
+        for (Vare3 vare : data)
+        {
+            if ((vare.getBeskrivelse().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+            else if ((vare.getPlassering().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+            else if ((vare.getType().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+            else if ((vare.getDato().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            {
+                foundItems.add(vare);
+            }
+        }
+
+        table.setItems(foundItems);
+
+        if (foundItems.isEmpty())
+        {
+            table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
+        }
+    }*/
+
 }
