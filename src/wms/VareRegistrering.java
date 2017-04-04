@@ -5,6 +5,8 @@
  */
 package wms;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,30 +14,27 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  *
  * @author Kristian
  */
 public class VareRegistrering {
-    private final TableView<Produkt> table ;
-    private final ObservableList<Produkt> data ;
+    private final TableView<Ordre> table ;
+    private final ObservableList<Ordre> data ;
     private WMSConnection con;
-    final HBox hb;
+    private final HBox hb;
     
     public VareRegistrering(){
         con = new WMSConnection();
         this.table = new TableView<>();
-        this.data = FXCollections.observableArrayList(con.getProdukt());
+        this.data = FXCollections.observableArrayList(con.getOrdre());
         this.hb = new HBox();
     }
     
@@ -55,16 +54,23 @@ public class VareRegistrering {
         hbox.setSpacing(10);
  
         //table column
-        TableColumn vareNummer = setTableColumn("Varenummer", 100, "VareId");
-        TableColumn navn = setTableColumn("Navn", 100, "Vnavn");
-        TableColumn kategori = setTableColumn("Kategori", 100, "Kategori");
-        TableColumn antall = setTableColumn("Antall", 100, "antall");
-        TableColumn mottaker = setTableColumn("Mottaker", 100, "mottaker");
-        TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
+        TableColumn ordreNummer = setTableColumn("Ordrenummer", 100, "ordreId");
+        TableColumn butikk = setTableColumn("Butikk", 100, "butikk");
+        TableColumn vekt = setTableColumn("Vekt", 100, "vekt");
         TableColumn dato = setTableColumn("Dato", 100, "dato");
+        TableColumn antall = setTableColumn("Antall", 100, "antall");
+        TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
+
+
+        TableColumn col_action = new TableColumn<>("Action");
+
+
+
+
+
  
         table.setItems(data);
-        table.getColumns().addAll(vareNummer, navn, kategori, antall, mottaker, plassering, dato);
+        table.getColumns().addAll(ordreNummer, butikk, vekt, dato, antall, plassering);
  
         //button
         Button saveButton = new Button("Lagre");

@@ -298,23 +298,23 @@ public tableTruck(){
         ObservableList<Truck> foundItems = FXCollections.observableArrayList();
         for (Truck truck : data)
         {
-            if ((truck.getTruckId().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            if ((truck.getTruckId().toLowerCase().contains(searchStr.toLowerCase())) && (!foundItems.contains(truck)))
             {
                 foundItems.add(truck);
             }
-            else if ((truck.getAnsvarlig().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            else if ((truck.getAnsvarlig().toLowerCase().contains(searchStr.toLowerCase())) && (!foundItems.contains(truck)))
             {
                 foundItems.add(truck);
             }
-            else if ((truck.getOperativ().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            else if ((truck.getOperativ().toLowerCase().contains(searchStr.toLowerCase())) && (!foundItems.contains(truck)))
             {
                 foundItems.add(truck);
             }
-            else if ((truck.getModel().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            else if ((truck.getModel().toLowerCase().contains(searchStr.toLowerCase())) && (!foundItems.contains(truck)))
             {
                 foundItems.add(truck);
             }
-            else if ((truck.getNeste_service().toLowerCase().contains(searchStr)) && (!foundItems.contains(truck)))
+            else if ((truck.getNeste_service().toLowerCase().contains(searchStr.toLowerCase())) && (!foundItems.contains(truck)))
             {
                 foundItems.add(truck);
             }

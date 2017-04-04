@@ -15,6 +15,10 @@ public class Vare3
     private String plassering;
     private String dato;
 
+    public Vare3()
+    {
+
+    }
 
     public Vare3(String vareNummer, String beskrivelse, String type, String antall, String plassering, String dato) {
         this.vareNummer = vareNummer;

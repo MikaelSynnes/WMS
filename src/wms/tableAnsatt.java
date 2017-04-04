@@ -223,8 +223,10 @@ public class tableAnsatt
         addButton.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
+
             public void handle(ActionEvent e) {
                 Ansatt ansatt = new Ansatt(
+
                         addAnsattNr.getText(),
                         addNavn.getText(),
                         addStilling.getText(),
@@ -239,6 +241,8 @@ public class tableAnsatt
                 addAvdeling.clear();
                 addEpost.clear();
                 addTelefon.clear();
+                tableAnsatt t = new tableAnsatt();
+                t.getScene(stage);
             }
         });
 
