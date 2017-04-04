@@ -64,10 +64,6 @@ public class VareRegistrering {
 
         TableColumn col_action = new TableColumn<>("Action");
 
-
-
-
-
  
         table.setItems(data);
         table.getColumns().addAll(ordreNummer, butikk, vekt, dato, antall, plassering);
