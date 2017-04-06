@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.layout.FlowPane;
@@ -31,12 +32,16 @@ public class WMS  {
     GridPane root;
     ArrayList<Button> buttons;
     Scene scene;
+    HBox logoutBox;
+
 
     VBox headerBox;
     VareRegistrering reg;
     Lageroversikttabell lager;
     tableTruck truck;
     tableAnsatt ansatt;
+
+
 
     public WMS() {
         root = new GridPane();
@@ -46,6 +51,8 @@ public class WMS  {
         lager= new Lageroversikttabell();
         truck = new tableTruck();
         ansatt = new tableAnsatt();
+        logoutBox = new HBox();
+
 
     }
 
@@ -74,15 +81,32 @@ public class WMS  {
         Button btn4 = createButton("Ansatte", ansatt.getScene(primaryStage), primaryStage);
         buttons.add(btn4);
 
+
+        Button logout = new Button("Log ut");
+
+        logout.setOnAction((ActionEvent e) ->
+        {
+            Innlogingsportal i = new Innlogingsportal();
+            i.getScene(primaryStage);
+        });
+        logout.setMinSize(80, 30);
+
+
+
         for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
 
         }
 
+
         root.setAlignment(Pos.CENTER);
 
         headerBox.getChildren().add(header);
         headerBox.setAlignment(Pos.CENTER);
+        logoutBox.getChildren().add(logout);
+        logoutBox.setAlignment(Pos.CENTER);
+
+
 
         for (Button b : buttons) {
             root.setMargin(b, new Insets(20));
@@ -95,6 +119,10 @@ public class WMS  {
         root.add(btn2, 1, 1);
         root.add(btn3, 0, 2);
         root.add(btn4, 1, 2);
+        root.add(logoutBox, 0, 3);
+        root.setColumnSpan(logoutBox, 2);
+
+
 
         primaryStage.setTitle("WMS 2000");
 
@@ -104,6 +132,9 @@ public class WMS  {
         primaryStage.setMinWidth(450);
         primaryStage.setMinHeight(620);
         primaryStage.show();
+
+
+
         /*  Button storage_overview_button = new Button();
         storage_overview_button.setText("Lageroversikt");
         storage_overview_button.setPrefSize(150, 50);
@@ -178,3 +209,4 @@ return scene;
     }
 
 }
+
