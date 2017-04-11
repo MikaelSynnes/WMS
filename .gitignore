@@ -2,3 +2,11 @@
 /nbproject/private/
 /build/
 /dist/
+/WMS.iml
+/.directory
+/.idea/kotlinc.xml
+/.idea/vcs.xml
+/.idea/libraries/sqljdbc42.xml
+/.idea/compiler.xml
+/.idea/misc.xml
+/.idea/modules.xml
