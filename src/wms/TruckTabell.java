@@ -26,14 +26,15 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
  
-public class tableTruck{
+public class TruckTabell
+{
  
     private TableView<Truck> table;
     private final ObservableList<Truck> data;
     private WMSConnection con;       
     final HBox hb ;
  
-public tableTruck(){
+public TruckTabell(){
     con = new WMSConnection();
     this.table = new TableView<Truck>();
     this.data = FXCollections.observableArrayList(con.getTruck());

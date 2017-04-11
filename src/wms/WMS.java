@@ -31,7 +31,7 @@ public class WMS  {
     VBox headerBox;
     VareRegistrering reg;
     LagerOversikt lager;
-    tableTruck truck;
+    TruckTabell truck;
     AnsattOversikt ansatt;
 
     public WMS() {
@@ -40,7 +40,7 @@ public class WMS  {
         headerBox = new VBox();
         reg = new VareRegistrering();
         lager= new LagerOversikt();
-        truck = new tableTruck();
+        truck = new TruckTabell();
         ansatt = new AnsattOversikt();
 
     }
