@@ -50,10 +50,10 @@ public class tableAnsatt
     public Scene getScene(Stage stage)
     {
         Scene scene = new Scene(new Group());
-        stage.setTitle("Ansatt Tabell");
+        stage.setTitle("Ansatt-tabell");
 
 
-        Header head = new Header("Ansatt Tabell");
+        Header head = new Header("Ansatt-tabell");
         Label label = head.createHeader();
 
         Label sokLabel = new Label("Søk: ");
@@ -81,10 +81,10 @@ public class tableAnsatt
         Callback<TableColumn, TableCell> cellFactory =
                 p -> new EditingCell();
 
-        TableColumn ansattNrCol = new TableColumn("Ansatt Nr");
+        TableColumn ansattNrCol = new TableColumn("Ansattnr");
         ansattNrCol.setMinWidth(100);
         ansattNrCol.setCellValueFactory(
-                new PropertyValueFactory<Ansatt, String>("AnsattId"));
+                new PropertyValueFactory<Ansatt, String>("AnsattID"));
         ansattNrCol.setCellFactory(cellFactory);
         ansattNrCol.setOnEditCommit(
                 new EventHandler<CellEditEvent<Ansatt, String>>()
@@ -196,7 +196,7 @@ public class tableAnsatt
         table.getColumns().addAll(ansattNrCol, navnCol, stillingCol, avdelingCol, epostCol, telefonCol);
 
         final TextField addAnsattNr = new TextField();
-        addAnsattNr.setPromptText("Ansatt Id");
+        addAnsattNr.setPromptText("AnsattID");
         addAnsattNr.setMaxWidth(ansattNrCol.getPrefWidth());
 
         final TextField addNavn = new TextField();

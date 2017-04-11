@@ -17,9 +17,9 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage)
     {
-        Innlogingsportal innlogingsportal = new Innlogingsportal();
+        Innloggingsportal innloggingsportal = new Innloggingsportal();
 
-        Scene scene = innlogingsportal.getScene(primaryStage);
+        Scene scene = innloggingsportal.getScene(primaryStage);
         primaryStage.setScene(scene);
     }
 

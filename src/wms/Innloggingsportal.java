@@ -21,12 +21,13 @@ import java.util.Scanner;
 
 
 
-public class Innlogingsportal  {
+public class Innloggingsportal
+{
 
     private WMSConnection wmsConnection;
     private Userpass userpass;
 
-    public Innlogingsportal() {
+    public Innloggingsportal() {
         wmsConnection = new WMSConnection();
         this.userpass = new Userpass();
 
