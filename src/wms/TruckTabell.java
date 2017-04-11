@@ -1,8 +1,6 @@
 package wms;
 
 
-import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
