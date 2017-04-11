@@ -29,7 +29,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class Lageroversikttabell
+public class LagerOversikt
 {
 
 
@@ -41,7 +41,7 @@ public class Lageroversikttabell
     final HBox lhb;
 
 
-    public Lageroversikttabell() {
+    public LagerOversikt() {
         this.con = new WMSConnection();
 
         this.hb = new HBox();
