@@ -24,15 +24,15 @@ import java.util.ArrayList;
  */
 public class WMS  {
 
-    GridPane root;
-    ArrayList<Button> buttons;
-    Scene scene;
+    private GridPane root;
+    private ArrayList<Button> buttons;
+    private Scene scene;
 
-    VBox headerBox;
-    VareRegistrering reg;
-    LagerOversikt lager;
-    TruckTabell truck;
-    AnsattOversikt ansatt;
+    private VBox headerBox;
+    private VareRegistrering reg;
+    private LagerOversikt lager;
+    private TruckTabell truck;
+    private AnsattOversikt ansatt;
 
     public WMS() {
         root = new GridPane();

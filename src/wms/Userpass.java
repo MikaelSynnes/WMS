@@ -5,8 +5,8 @@ package wms;
  */
 public class Userpass
 {
-    String pass;
-    String user;
+    private String pass;
+    private String user;
 
     public Userpass()
     {
