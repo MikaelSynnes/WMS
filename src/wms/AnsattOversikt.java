@@ -1,11 +1,8 @@
 package wms;
 
 
-import javafx.application.Application;
-
 import static javafx.application.Application.launch;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -29,7 +26,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class tableAnsatt
+public class AnsattOversikt
 {
 
     private final TableView<Ansatt> table;
@@ -37,7 +34,7 @@ public class tableAnsatt
     private WMSConnection con;
     final HBox hb;
 
-    public tableAnsatt()
+    public AnsattOversikt()
     {
         con = new WMSConnection();
         this.table = new TableView<Ansatt>();
@@ -241,7 +238,7 @@ public class tableAnsatt
                 addAvdeling.clear();
                 addEpost.clear();
                 addTelefon.clear();
-                tableAnsatt t = new tableAnsatt();
+                AnsattOversikt t = new AnsattOversikt();
                 t.getScene(stage);
             }
         });
