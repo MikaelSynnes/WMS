@@ -14,12 +14,14 @@ public class Produkt {
     private String Vnavn;
     private String Kategori;
     private String Dato;
+    private String Plassering;
 
     public Produkt(String VareId, String Vnavn, String Kategori, String Dato) {
         this.VareId = VareId;
         this.Vnavn = Vnavn;
         this.Kategori = Kategori;
         this.Dato = Dato;
+        this.Plassering = null;
     }
     
     public Produkt(){
@@ -56,5 +58,13 @@ public class Produkt {
 
     public void setDato(String Dato) {
         this.Dato = Dato;
+    }
+
+    public void setPlassering(String plassering){
+        this.Plassering = plassering;
+    }
+
+    public String getPlassering(){
+        return this.Plassering;
     }
 }

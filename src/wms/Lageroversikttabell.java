@@ -199,13 +199,13 @@ public class Lageroversikttabell
     }
 
 
-  /*  // TODO: Abstrahere ut søkefunksjonen i egen klasse
+    // TODO: Abstrahere ut søkefunksjonen i egen klasse
     private void search(String searchStr)
     {
-        ObservableList<Vare3> foundItems = FXCollections.observableArrayList();
-        for (Vare3 vare : data)
+        ObservableList<Produkt> foundItems = FXCollections.observableArrayList();
+        for (Produkt vare : data)
         {
-            if ((vare.getBeskrivelse().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            if ((vare.getVnavn().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
             {
                 foundItems.add(vare);
             }
@@ -213,7 +213,7 @@ public class Lageroversikttabell
             {
                 foundItems.add(vare);
             }
-            else if ((vare.getType().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
+            else if ((vare.getKategori().toLowerCase().contains(searchStr)) && !foundItems.contains(vare))
             {
                 foundItems.add(vare);
             }
@@ -229,6 +229,6 @@ public class Lageroversikttabell
         {
             table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
         }
-    }*/
+    }
 
 }
