@@ -5,11 +5,8 @@
  */
 package wms;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -28,24 +24,24 @@ import java.util.ArrayList;
  */
 public class WMS  {
 
-    GridPane root;
-    ArrayList<Button> buttons;
-    Scene scene;
+    private GridPane root;
+    private ArrayList<Button> buttons;
+    private Scene scene;
 
-    VBox headerBox;
-    VareRegistrering reg;
-    Lageroversikttabell lager;
-    tableTruck truck;
-    tableAnsatt ansatt;
+    private VBox headerBox;
+    private VareRegistrering reg;
+    private LagerOversikt lager;
+    private TruckTabell truck;
+    private AnsattOversikt ansatt;
 
     public WMS() {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();
         reg = new VareRegistrering();
-        lager= new Lageroversikttabell();
-        truck = new tableTruck();
-        ansatt = new tableAnsatt();
+        lager= new LagerOversikt();
+        truck = new TruckTabell();
+        ansatt = new AnsattOversikt();
 
     }
 

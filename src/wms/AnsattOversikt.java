@@ -1,11 +1,6 @@
 package wms;
 
 
-import javafx.application.Application;
-
-import static javafx.application.Application.launch;
-
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -29,7 +24,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class tableAnsatt
+public class AnsattOversikt
 {
 
     private final TableView<Ansatt> table;
@@ -37,7 +32,7 @@ public class tableAnsatt
     private WMSConnection con;
     final HBox hb;
 
-    public tableAnsatt()
+    public AnsattOversikt()
     {
         con = new WMSConnection();
         this.table = new TableView<Ansatt>();
@@ -50,10 +45,10 @@ public class tableAnsatt
     public Scene getScene(Stage stage)
     {
         Scene scene = new Scene(new Group());
-        stage.setTitle("Ansatt Tabell");
+        stage.setTitle("Ansatt-tabell");
 
 
-        Header head = new Header("Ansatt Tabell");
+        Header head = new Header("Ansatt-tabell");
         Label label = head.createHeader();
 
         Label sokLabel = new Label("Søk: ");
@@ -81,10 +76,10 @@ public class tableAnsatt
         Callback<TableColumn, TableCell> cellFactory =
                 p -> new EditingCell();
 
-        TableColumn ansattNrCol = new TableColumn("Ansatt Nr");
+        TableColumn ansattNrCol = new TableColumn("Ansattnr");
         ansattNrCol.setMinWidth(100);
         ansattNrCol.setCellValueFactory(
-                new PropertyValueFactory<Ansatt, String>("AnsattId"));
+                new PropertyValueFactory<Ansatt, String>("AnsattID"));
         ansattNrCol.setCellFactory(cellFactory);
         ansattNrCol.setOnEditCommit(
                 new EventHandler<CellEditEvent<Ansatt, String>>()
@@ -196,7 +191,7 @@ public class tableAnsatt
         table.getColumns().addAll(ansattNrCol, navnCol, stillingCol, avdelingCol, epostCol, telefonCol);
 
         final TextField addAnsattNr = new TextField();
-        addAnsattNr.setPromptText("Ansatt Id");
+        addAnsattNr.setPromptText("AnsattID");
         addAnsattNr.setMaxWidth(ansattNrCol.getPrefWidth());
 
         final TextField addNavn = new TextField();
@@ -241,7 +236,7 @@ public class tableAnsatt
                 addAvdeling.clear();
                 addEpost.clear();
                 addTelefon.clear();
-                tableAnsatt t = new tableAnsatt();
+                AnsattOversikt t = new AnsattOversikt();
                 t.getScene(stage);
             }
         });
