@@ -40,12 +40,14 @@ public class WMS  {
     private TruckTabell truck;
     private AnsattOversikt ansatt;
     private HistorikkTabell hist;
+    Innloggingsportal i;
 
     public WMS() {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();
         reg = new VareRegistrering();
+        i = new Innloggingsportal();
 
         logoutBox = new HBox();
 
@@ -69,7 +71,7 @@ public class WMS  {
         header.setPadding(new Insets(20));
 
         Font buttonFont = new Font(20);
-       
+
 
         // lager knapper og legger dem til i en ArrayList for å legge dem til i scena uten og å måtte kode duplisere
         Button btn = createButton("Lageroversikt", lager.getScene(primaryStage), primaryStage);
@@ -82,16 +84,10 @@ public class WMS  {
         buttons.add(btn4);
         Button btn5 = createButton("Historikk", hist.getScene(primaryStage), primaryStage);
         buttons.add(btn5);
+        Button logout = createButton("Logg ut", i.getScene(primaryStage), primaryStage);
+        buttons.add(logout);
 
 
-        Button logout = new Button("Log ut");
-
-        logout.setOnAction((ActionEvent e) ->
-        {
-            Innloggingsportal i = new Innloggingsportal();
-            i.getScene(primaryStage);
-        });
-        logout.setMinSize(80, 30);
 
 
 
@@ -104,8 +100,7 @@ public class WMS  {
 
         headerBox.getChildren().add(header);
         headerBox.setAlignment(Pos.CENTER);
-        logoutBox.getChildren().add(logout);
-        logoutBox.setAlignment(Pos.CENTER);
+
 
 
 
@@ -121,9 +116,9 @@ public class WMS  {
         root.add(btn3, 0, 2);
         root.add(btn4, 1, 2);
         root.add(btn5, 0, 3);
-        root.add(logoutBox, 0, 3);
+        root.add(logout, 1, 3);
 
-        root.setColumnSpan(logoutBox, 2);
+
 
 
 
