@@ -1,6 +1,7 @@
 package wms;
 
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -158,7 +159,25 @@ public TruckTabell(){
             }
         );
         
-        
+        TableColumn<Truck, Truck> actionCol = new TableColumn<>("Handling");
+        actionCol.setMinWidth(40);
+        actionCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        actionCol.setCellFactory(param -> new TableCell<Truck, Truck>() {
+            private final Button deleteButton = new Button("Slett");
+
+            @Override
+            protected void updateItem(Truck truck, boolean empty) {
+                super.updateItem(truck, empty);
+
+                if (truck == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(event -> data.remove(truck));
+            }
+        });
  
         table.setItems(data);
         table.getColumns().addAll(truckNrCol, ansvarligCol, operativCol, modelCol, serviceCol);
