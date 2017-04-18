@@ -49,7 +49,7 @@ public class getJSON {
     }
 
     public static void getOrder() throws Exception {
-        String fetchString = httpGet("http://kaysl-logix.uials.no:8080/orders/10");
+        String fetchString = httpGet("http://kaysl-logix.uials.no:8080/orders/");
         try {
             Order ordre = mapper.readValue(fetchString, Order.class);
             System.out.println(ordre.getOrderID());
