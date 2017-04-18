@@ -88,7 +88,7 @@ public class WMS  {
 
         logout.setOnAction((ActionEvent e) ->
         {
-            Innlogingsportal i = new Innlogingsportal();
+            Innloggingsportal i = new Innloggingsportal();
             i.getScene(primaryStage);
         });
         logout.setMinSize(80, 30);
