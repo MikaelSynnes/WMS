@@ -29,6 +29,7 @@ public class WMSConnection {
     private Connection con;
     private PreparedStatement addAnsattStatement;
     private PreparedStatement addTruckStatement;
+    private PreparedStatement addOrdreStatement;
 
     
     public WMSConnection(){
@@ -45,6 +46,7 @@ public class WMSConnection {
         try {
             addAnsattStatement = con.prepareStatement("INSERT INTO Ansatt VALUES(?, ?, ?, ?, ?, ?)");
             addTruckStatement = con.prepareStatement("INSERT INTO Truck (TruckId, Ansvarlig, Operativ, Model, Neste_service) VALUES(?, ?, ?, ?, ?)");
+            addOrdreStatement = con.prepareStatement("INSERT INTO Ordre (OrdreId, Butikk, Vekt, Dato, Plassering) VALUES(?, ?, ?, ?, ?)");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -170,6 +172,23 @@ public class WMSConnection {
          }
          return ordreList;
     }
+                   public void addOrdre(Ordre ordre){
+         try {
+
+            addOrdreStatement.setInt(1, Integer.parseInt(ordre.getOrdreId()));
+            addOrdreStatement.setString(2, ordre.getButikk());
+            addOrdreStatement.setString(3, ordre.getVekt());
+            addOrdreStatement.setString(4, ordre.getDato());
+            addOrdreStatement.setString(5, ordre.getPlassering());
+            int updates = addOrdreStatement.executeUpdate();
+
+         }catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+    }
+                   }
+
+
 
     public List<Historikk> getHistorikk(){
         List<Historikk> ordreList = null;
