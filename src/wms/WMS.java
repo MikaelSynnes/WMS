@@ -5,16 +5,21 @@
  */
 package wms;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -24,9 +29,10 @@ import java.util.ArrayList;
  */
 public class WMS  {
 
-    private GridPane root;
-    private ArrayList<Button> buttons;
-    private Scene scene;
+    GridPane root;
+    ArrayList<Button> buttons;
+    Scene scene;
+    HBox logoutBox;
 
     private VBox headerBox;
     private VareRegistrering reg;
@@ -40,6 +46,9 @@ public class WMS  {
         scene = new Scene(root);
         headerBox = new VBox();
         reg = new VareRegistrering();
+
+        logoutBox = new HBox();
+
         lager= new LagerOversikt();
         truck = new TruckTabell();
         ansatt = new AnsattOversikt();
@@ -74,6 +83,18 @@ public class WMS  {
         Button btn5 = createButton("Historikk", hist.getScene(primaryStage), primaryStage);
         buttons.add(btn5);
 
+
+        Button logout = new Button("Log ut");
+
+        logout.setOnAction((ActionEvent e) ->
+        {
+            Innlogingsportal i = new Innlogingsportal();
+            i.getScene(primaryStage);
+        });
+        logout.setMinSize(80, 30);
+
+
+
         for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
 
@@ -83,6 +104,10 @@ public class WMS  {
 
         headerBox.getChildren().add(header);
         headerBox.setAlignment(Pos.CENTER);
+        logoutBox.getChildren().add(logout);
+        logoutBox.setAlignment(Pos.CENTER);
+
+
 
         for (Button b : buttons) {
             root.setMargin(b, new Insets(20));
@@ -90,12 +115,17 @@ public class WMS  {
 
         // Legg til header og knapper
         root.add(headerBox, 0, 0);
-        root.setColumnSpan(headerBox, 3);
+        root.setColumnSpan(headerBox, 2);
         root.add(btn, 0, 1);
         root.add(btn2, 1, 1);
         root.add(btn3, 0, 2);
         root.add(btn4, 1, 2);
         root.add(btn5, 0, 3);
+        root.add(logoutBox, 0, 3);
+
+        root.setColumnSpan(logoutBox, 2);
+
+
 
         primaryStage.setTitle("WMS 2000");
 
