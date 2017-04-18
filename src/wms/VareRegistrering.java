@@ -146,10 +146,12 @@ public class VareRegistrering {
             SortedList<Produkt> sortedData = new SortedList<>(filteredData);
             sortedData.comparatorProperty().bind(table.comparatorProperty());
             table.setItems(sortedData);*/
-        });
 
         return scene;
     }
+
+
+
     
 
     /**
