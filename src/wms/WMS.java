@@ -33,6 +33,7 @@ public class WMS  {
     private LagerOversikt lager;
     private TruckTabell truck;
     private AnsattOversikt ansatt;
+    private HistorikkTabell hist;
 
     public WMS() {
         root = new GridPane();
@@ -42,6 +43,7 @@ public class WMS  {
         lager= new LagerOversikt();
         truck = new TruckTabell();
         ansatt = new AnsattOversikt();
+        hist = new HistorikkTabell();
 
     }
 
@@ -69,6 +71,8 @@ public class WMS  {
         buttons.add(btn3);
         Button btn4 = createButton("Ansatte", ansatt.getScene(primaryStage), primaryStage);
         buttons.add(btn4);
+        Button btn5 = createButton("Historikk", hist.getScene(primaryStage), primaryStage);
+        buttons.add(btn5);
 
         for (Button currentButton : buttons) {
             currentButton.setFont(buttonFont);
@@ -86,19 +90,20 @@ public class WMS  {
 
         // Legg til header og knapper
         root.add(headerBox, 0, 0);
-        root.setColumnSpan(headerBox, 2);
+        root.setColumnSpan(headerBox, 3);
         root.add(btn, 0, 1);
         root.add(btn2, 1, 1);
         root.add(btn3, 0, 2);
         root.add(btn4, 1, 2);
+        root.add(btn5, 0, 3);
 
         primaryStage.setTitle("WMS 2000");
 
         primaryStage.setScene(scene);
         minWidth = primaryStage.getWidth();
         minHeight = primaryStage.getHeight();
-        primaryStage.setMinWidth(450);
-        primaryStage.setMinHeight(620);
+        primaryStage.setMinWidth(800);
+        primaryStage.setMinHeight(800);
         primaryStage.show();
         /*  Button storage_overview_button = new Button();
         storage_overview_button.setText("Lageroversikt");

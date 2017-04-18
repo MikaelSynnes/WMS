@@ -170,6 +170,29 @@ public class WMSConnection {
          }
          return ordreList;
     }
+
+    public List<Historikk> getHistorikk(){
+        List<Historikk> ordreList = null;
+        try{
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM Historikk");
+            ordreList = new ArrayList<>();
+            while (rs.next()){
+                Historikk historikk = new Historikk("","","","");
+                historikk.setDato(rs.getString("dato"));
+                historikk.setPlassering(rs.getString("plassering"));
+                historikk.setVareId(rs.getString("vareId"));
+                historikk.setOrdreId(rs.getString("ordreId"));
+
+                ordreList.add(historikk);
+
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return ordreList;
+    }
     public String getPassword() {
 
         String password = null;

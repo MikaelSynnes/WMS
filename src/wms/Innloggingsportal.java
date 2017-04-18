@@ -54,7 +54,7 @@ public class Innloggingsportal
         final Text actiontarget = new Text();
         grid.add(actiontarget, 1 ,6);
 
-        Scene scene = new Scene(grid, 600, 600);
+        Scene scene = new Scene(grid, 800, 800);
 
         Text scenetitle = new Text("Innlogging");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));

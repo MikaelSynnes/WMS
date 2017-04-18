@@ -18,6 +18,7 @@ public class Main extends Application
     public void start(Stage primaryStage)
     {
         Innloggingsportal innloggingsportal = new Innloggingsportal();
+        //HistorikkTabell hist = new HistorikkTabell();
 
         Scene scene = innloggingsportal.getScene(primaryStage);
         primaryStage.setScene(scene);
