@@ -326,5 +326,5 @@ public TruckTabell(){
         {
             table.setPlaceholder(new Label("Beklager, fant ingenting for søket " + "'" + searchStr + "'"));
         }
-    }
+    } 
 }
