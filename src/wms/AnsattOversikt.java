@@ -1,6 +1,7 @@
 package wms;
 
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -185,10 +186,33 @@ public class AnsattOversikt
                     }
                 }
         );
+        
+        TableColumn<Ansatt, Ansatt> deleteCol = new TableColumn<>("Handling");
+        deleteCol.setCellValueFactory(
+            param -> new ReadOnlyObjectWrapper<>(param.getValue())
+        );
+        deleteCol.setCellFactory(param -> new TableCell<Ansatt, Ansatt>() {
+            private final Button deleteButton = new Button("Slett");
+
+            @Override
+            protected void updateItem(Ansatt ansatt, boolean empty) {
+                super.updateItem(ansatt, empty);
+
+                if (ansatt == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(
+                        event -> con.deleteEmployee(ansatt.getAnsattId())
+                );
+            }
+        });
 
 
         table.setItems(data);
-        table.getColumns().addAll(ansattNrCol, navnCol, stillingCol, avdelingCol, epostCol, telefonCol);
+        table.getColumns().addAll(ansattNrCol, navnCol, stillingCol, avdelingCol, epostCol, telefonCol,deleteCol);
 
         final TextField addAnsattNr = new TextField();
         addAnsattNr.setPromptText("AnsattID");

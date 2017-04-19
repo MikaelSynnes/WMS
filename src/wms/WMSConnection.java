@@ -254,4 +254,16 @@ public class WMSConnection {
         return username;
 
     }
-}
+    
+    public void deleteEmployee(String employee){
+       try {
+            PreparedStatement stm = con.prepareStatement("DELETE FROM Ansatt WHERE AnsattId=?");
+            stm.setString(1, employee);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(WMSConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+} 
