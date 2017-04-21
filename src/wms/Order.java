@@ -9,6 +9,7 @@
  */
 package wms;
 
+import java.util.ArrayList;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,10 +22,20 @@ public class Order {
     private int employeeID;
     private String placedDate;
     private String invoiceDate;
+    private int quantity;
+    private ArrayList<OrderLine> orderLines;
+    
 
     public void setOrderID(int i) {
         orderID = i;
     }
+    public void setquantity(int i){
+        quantity=i;
+    }
+    public void setOrderLines(ArrayList i){
+        orderLines=i;
+    }
+   
 
     public void setCustomerID(int i) {
         customerID = i;
@@ -49,6 +60,9 @@ public class Order {
     public int getCustomerID() {
         return customerID;
     }
+    public int getQuantity(){
+        return quantity;
+    }
 
     public int setEmployeeID() {
         return employeeID;
@@ -60,6 +74,10 @@ public class Order {
 
     public String getInvoiceDate() {
         return invoiceDate;
+    }
+    
+    public ArrayList getOrderLines(){
+        return orderLines;
     }
 
 }
