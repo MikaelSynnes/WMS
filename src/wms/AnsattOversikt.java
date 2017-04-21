@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 
 public class AnsattOversikt
 {
@@ -185,10 +186,29 @@ public class AnsattOversikt
                     }
                 }
         );
+        
+        TableColumn<Ansatt, Ansatt> actionCol = new TableColumn<>("Handling");
+        actionCol.setMinWidth(40);
+        actionCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        actionCol.setCellFactory(param -> new TableCell<Ansatt, Ansatt>() {
+            private final Button deleteButton = new Button("Slett");
 
+            @Override
+            protected void updateItem(Ansatt ansatt, boolean empty) {
+                super.updateItem(ansatt, empty);
 
+                if (ansatt == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(event -> data.remove(ansatt));
+            }
+        });
+ 
         table.setItems(data);
-        table.getColumns().addAll(ansattNrCol, navnCol, stillingCol, avdelingCol, epostCol, telefonCol);
+        table.getColumns().addAll(ansattNrCol, navnCol, stillingCol, avdelingCol, epostCol, telefonCol,actionCol);
 
         final TextField addAnsattNr = new TextField();
         addAnsattNr.setPromptText("AnsattID");
