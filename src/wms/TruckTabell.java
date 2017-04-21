@@ -1,6 +1,8 @@
 package wms;
 
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -65,8 +67,14 @@ public TruckTabell(){
         tilbakeButton.setText("Tilbake");
         tilbakeButton.setPrefSize(150, 20);
         tilbakeButton.setOnAction((ActionEvent event) ->{
-            WMS w = new WMS();
-            w.getScene(stage);
+            WMS w;
+            try {
+                w = new WMS();
+                  w.getScene(stage);
+            } catch (Exception ex) {
+                Logger.getLogger(TruckTabell.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
         });
  
         table.setEditable(true);

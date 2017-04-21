@@ -2,6 +2,8 @@ package wms;/**
  * Created by aleksander on 3/14/17.
  */
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -86,8 +88,14 @@ public class LagerOversikt
 
         tilbake.setOnAction((ActionEvent e) ->
         {
-            WMS w = new WMS();
-            w.getScene(stage);
+            WMS w;
+            try {
+                w = new WMS();
+                  w.getScene(stage);
+            } catch (Exception ex) {
+                Logger.getLogger(LagerOversikt.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
         });
         hb.getChildren().addAll(tilbake);
 

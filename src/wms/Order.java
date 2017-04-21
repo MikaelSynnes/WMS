@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Order {
-
+    
     private int orderID;
     private int customerID;
     private int employeeID;
@@ -24,13 +24,14 @@ public class Order {
     private String invoiceDate;
     private int quantity;
     private ArrayList<OrderLine> orderLines;
-    
 
     public void setOrderID(int i) {
         orderID = i;
     }
-    public void setquantity(int i){
-        quantity=i;
+    public void setQuantity(){
+        int i=0;
+        i = orderLines.stream().map((_item) -> 1).reduce(i, Integer::sum);
+       quantity=i;
     }
     public void setOrderLines(ArrayList i){
         orderLines=i;

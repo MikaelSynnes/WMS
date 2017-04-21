@@ -42,7 +42,7 @@ public class WMS  {
     private HistorikkTabell hist;
     Innloggingsportal i;
 
-    public WMS() {
+    public WMS() throws Exception {
         root = new GridPane();
         scene = new Scene(root);
         headerBox = new VBox();
@@ -59,7 +59,7 @@ public class WMS  {
     }
 
 
-    public Scene getScene(Stage primaryStage) {
+    public Scene getScene(Stage primaryStage) throws Exception {
         buttons = new ArrayList<Button>();
 
         double minWidth;

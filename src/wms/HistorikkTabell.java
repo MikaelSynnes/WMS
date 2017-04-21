@@ -17,6 +17,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Kristian on 17.04.2017.
@@ -62,8 +64,14 @@ public class HistorikkTabell {
         Button backButton = new Button("Tilbake");
         backButton.setPrefSize(150, 20);
         backButton.setOnAction((ActionEvent b)->{
-            WMS w = new WMS();
-            w.getScene(stage);
+            WMS w;
+            try {
+                w = new WMS();
+                w.getScene(stage);
+            } catch (Exception ex) {
+                Logger.getLogger(HistorikkTabell.class.getName()).log(Level.SEVERE, null, ex);
+            }
+      
         });
 
         //buttonbox

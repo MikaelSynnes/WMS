@@ -2,6 +2,8 @@ package wms;/**
  * Created by aleksander on 3/20/17.
  */
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -81,8 +83,13 @@ public class Innloggingsportal
             String value1 = userTextField.getText();
             String value2 = passwordBox.getText();
             if(value1.equals(wmsConnection.getUser()) && value2.equals(wmsConnection.getPassword())) {
-                WMS w = new WMS();
-                w.getScene(primaryStage);
+             
+                try {
+                       WMS w = new WMS();
+                    w.getScene(primaryStage);
+                } catch (Exception ex) {
+                    Logger.getLogger(Innloggingsportal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             else{
                 Label l = new Label("Wrong username or password");

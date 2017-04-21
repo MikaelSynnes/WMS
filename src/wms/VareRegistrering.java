@@ -5,6 +5,9 @@
  */
 package wms;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -28,21 +31,26 @@ import javafx.util.Callback;
  * @author Kristian
  */
 public class VareRegistrering {
-    private final TableView<Ordre> table ;
-    private final ObservableList<Ordre> data ;
+    private final TableView<Order> table ;
+    private final ObservableList<Order> data ;
+ 
     private WMSConnection con;
     private final HBox hb;
     private final HBox hbh;
+    getJSON erp;
     
-    public VareRegistrering(){
+    public VareRegistrering() throws Exception{
+          getJSON erp=new getJSON();
         con = new WMSConnection();
         this.table = new TableView<>();
-        this.data = FXCollections.observableArrayList(con.getOrdre());
+        this.data = FXCollections.observableArrayList(erp.getAllOrders());
+        
+     
         this.hb = new HBox();
         this.hbh = new HBox();
     }
     
-    public Scene getScene(Stage stage){
+    public Scene getScene(Stage stage) throws Exception{
         Scene scene = new Scene(new Group());
 
  
@@ -58,12 +66,12 @@ public class VareRegistrering {
         hbox.setSpacing(10);
  
         //table column
-        TableColumn ordreNummer = setTableColumn("Ordrenummer", 100, "ordreId");
-        TableColumn butikk = setTableColumn("Butikk", 100, "butikk");
-        TableColumn vekt = setTableColumn("Vekt", 100, "vekt");
-        TableColumn dato = setTableColumn("Dato", 100, "dato");
-        TableColumn antall = setTableColumn("Antall", 100, "antall");
-        TableColumn plassering = setTableColumn("Plassering", 100, "plassering");
+        TableColumn ordreNummer = setTableColumn("Ordrenummer", 100, "orderID");
+        TableColumn kunde = setTableColumn("KundeNr", 100, "customerID");
+        TableColumn vekt = setTableColumn("AnsattNr", 100, "employeeID");
+        TableColumn dato = setTableColumn("Laget Dato", 100, "placedDate");
+        TableColumn antall = setTableColumn("Sent Dato", 100, "antall");
+        TableColumn plassering = setTableColumn("Antall Varer", 100, "quantity");
 
 
         TableColumn col_action = new TableColumn<>("Action");
@@ -73,8 +81,18 @@ public class VareRegistrering {
 
 
  
+    
+        
+         
+        
         table.setItems(data);
-        table.getColumns().addAll(ordreNummer, butikk, vekt, dato, antall, plassering);
+        
+        table.getColumns().addAll(ordreNummer, kunde, vekt, dato, antall, plassering);
+      
+        
+              
+               
+     
  
         //button
         Button saveButton = new Button("Lagre");
@@ -85,8 +103,14 @@ public class VareRegistrering {
         Button backButton = new Button("Tilbake");
         backButton.setPrefSize(150, 20);
         backButton.setOnAction((ActionEvent b)->{
-            WMS w = new WMS();
-            w.getScene(stage);
+            WMS w;
+            try {
+                w = new WMS();
+                w.getScene(stage);
+            } catch (Exception ex) {
+                Logger.getLogger(VareRegistrering.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         });
         
         //buttonbox

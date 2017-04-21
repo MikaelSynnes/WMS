@@ -23,12 +23,15 @@ import java.util.HashMap;
  * @author Mikael
  */
 public class getJSON {
+    public getJSON(){
+             mapper = new ObjectMapper();
+            }
 
     private static ObjectMapper mapper;
 
-    public static void main(String[] args) throws Exception {
-        mapper = new ObjectMapper();
-
+  //  public static void main(String[] args) throws Exception {
+     
+/*
         ArrayList<OrderLine> line = new ArrayList<>();
         line.add(new OrderLine(1, 1, 1, 1));
         Order order = new Order();
@@ -49,14 +52,16 @@ public class getJSON {
        for(Order y:or){
            System.out.println(y.getOrderID());
        }
+*/
 
-    }
+  //  }
 
     public static ArrayList<Order> getAllOrders() throws Exception {
         ArrayList<Order> orders = new ArrayList<>();
         for (int i = 1; i < 3; i++) {
             Order o = getOrder(i);
             if (o != null) {
+             
                 orders.add(o);
             } else{
                 return orders;
@@ -72,8 +77,7 @@ public class getJSON {
 
         try {
             Order ordre = mapper.readValue(fetchString, Order.class);
-            System.out.println();
-            System.out.println(ordre.getOrderLines().toString());
+          
             return ordre;
 
         }
@@ -116,7 +120,7 @@ public class getJSON {
             response.append(input);
         }
         in.close();
-        System.out.println(response.toString());
+       
         return response.toString();
     }
 
