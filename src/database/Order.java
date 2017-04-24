@@ -7,7 +7,7 @@
  *
  * @author Mikael
  */
-package wms;
+package database;
 
 import java.util.ArrayList;
 import lombok.Data;
@@ -52,6 +52,9 @@ public class Order {
 
     public void setInvoiceDate(String i) {
         invoiceDate = i;
+    }
+    public int getEmployeeID(){
+        return employeeID;
     }
 
     public int getOrderID() {

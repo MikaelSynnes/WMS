@@ -4,28 +4,31 @@ package wms;
  * Created by Kristian on 02.04.2017.
  */
 public class Ordre {
-    private String ordreId;
+    private int ordreID;
     private String butikk;
     private String vekt;
     private String dato;
     private String antall;
-    private String plassering;
+    private int ansatt;
 
-    public Ordre(String ordreId, String butikk, String vekt, String dato, String antall, String plassering) {
-        this.ordreId = ordreId;
+    public Ordre(int ordreId, String butikk, String vekt, String dato, String antall, int ansatt) {
+        this.ordreID = ordreId;
         this.butikk = butikk;
         this.vekt = vekt;
         this.dato = dato;
         this.antall = antall;
-        this.plassering = plassering;
+        this.ansatt = ansatt;
     }
 
-    public String getOrdreId() {
-        return ordreId;
+    public int getOrdreId() {
+        return ordreID;
+    }
+    public int Ansatt(){
+        return ansatt;
     }
 
-    public void setOrdreId(String ordreId) {
-        this.ordreId = ordreId;
+    public void setOrdreId(int ordreId) {
+        this.ordreID = ordreID;
     }
 
     public String getButikk() {
@@ -60,11 +63,11 @@ public class Ordre {
         this.antall = antall;
     }
 
-    public String getPlassering() {
-        return plassering;
+    public int getAnsatt() {
+        return ansatt;
     }
 
-    public void setPlassering(String plassering) {
-        this.plassering = plassering;
+    public void setAnsatt(int plassering) {
+        this.ansatt = plassering;
     }
 }

@@ -156,13 +156,13 @@ public class WMSConnection {
              ResultSet rs = s.executeQuery("SELECT * FROM Ordre");
              ordreList = new ArrayList<>();
              while (rs.next()){
-                 Ordre ordre = new Ordre("","","","","","");
-                 ordre.setOrdreId(rs.getString("OrdreId"));
+                 Ordre ordre = new Ordre(1,"","","","",1);
+                 ordre.setOrdreId(rs.getInt("OrdreID"));
                  ordre.setButikk(rs.getString("butikk"));
                  ordre.setVekt(rs.getString("Vekt"));
                  ordre.setDato(rs.getString("Dato"));
                  ordre.setAntall(rs.getString("Antall"));
-                 ordre.setPlassering(rs.getString("Plassering"));
+                 ordre.setAnsatt(rs.getInt("Ansatt"));
                  ordreList.add(ordre);
 
              }
@@ -175,11 +175,11 @@ public class WMSConnection {
                    public void addOrdre(Ordre ordre){
          try {
 
-            addOrdreStatement.setInt(1, Integer.parseInt(ordre.getOrdreId()));
+            addOrdreStatement.setInt(1, ordre.getOrdreId());
             addOrdreStatement.setString(2, ordre.getButikk());
             addOrdreStatement.setString(3, ordre.getVekt());
             addOrdreStatement.setString(4, ordre.getDato());
-            addOrdreStatement.setString(5, ordre.getPlassering());
+            addOrdreStatement.setInt(5, ordre.getAnsatt());
             int updates = addOrdreStatement.executeUpdate();
 
          }catch (SQLException ex) {
