@@ -117,7 +117,7 @@ public class VareRegistrering {
                         }
                     }
                 });
-                contextMenu.getItems().add(removeMenuItem);
+                contextMenu.getItems().addAll(newWindow,removeMenuItem);
                 // Set context menu on row, but use a binding to make it only show for non-empty rows:
                 row.contextMenuProperty().bind(
                         Bindings.when(row.emptyProperty())

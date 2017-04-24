@@ -45,8 +45,10 @@ public class getJSON {
             if (o != null) {
 
                 orders.add(o);
-            } else {
+            } else if(i == 3 || i == 4){
                
+            }else{
+                return orders;
             }
 
         }
