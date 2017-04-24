@@ -58,12 +58,16 @@ public class getJSON {
 
     public static ArrayList<Order> getAllOrders() throws Exception {
         ArrayList<Order> orders = new ArrayList<>();
-        for (int i = 1; i < 3; i++) {
+        for (int i = 1; i < 100; i++) {
             Order o = getOrder(i);
             if (o != null) {
-             
+
                 orders.add(o);
-            } else{
+            }
+            else if(i == 3 || i ==4){
+
+            }
+            else{
                 return orders;
             }
  
@@ -72,10 +76,10 @@ public class getJSON {
     }
 
     public static Order getOrder(int i) throws Exception {
-
+        try {
         String fetchString = httpGet("http://kaysl-logix.uials.no:8080/orders/" + i);
 
-        try {
+
             Order ordre = mapper.readValue(fetchString, Order.class);
           
             return ordre;
