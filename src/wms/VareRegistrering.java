@@ -8,6 +8,9 @@ package wms;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import database.Order;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -39,11 +43,11 @@ public class VareRegistrering {
     private static getJSON erp;
 
     private final HBox hbh;
-
+    private final ArrayList<Order> ordrer;
 
     public VareRegistrering() throws Exception {
         getJSON erp = new getJSON();
-        ordrer = new ArrayList<Ordre>();
+        ordrer = new ArrayList<>();
         for (Order ord : erp.getAllOrders()) {
             int id=ord.getCustomerID();
 
@@ -88,6 +92,41 @@ public class VareRegistrering {
 
         table.getColumns().addAll(ordreNummer, kunde, vekt, dato, antall, plassering);
 
+        table.setRowFactory(new Callback<TableView<Order>, TableRow<Order>>() {
+            @Override
+            public TableRow<Order> call(TableView<Order> tableView) {
+                final TableRow<Order> row = new TableRow<>();
+                final ContextMenu contextMenu = new ContextMenu();
+                final MenuItem removeMenuItem = new MenuItem("Slett");
+                final MenuItem newWindow = new MenuItem("Åpne");
+                removeMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        table.getItems().remove(row.getItem());
+                    }
+                });
+                newWindow.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            OrderTable o = new OrderTable();
+                            o.getScene(stage);
+                        }
+                        catch (Exception ex){
+
+                        }
+                    }
+                });
+                contextMenu.getItems().add(removeMenuItem);
+                // Set context menu on row, but use a binding to make it only show for non-empty rows:
+                row.contextMenuProperty().bind(
+                        Bindings.when(row.emptyProperty())
+                                .then((ContextMenu)null)
+                                .otherwise(contextMenu)
+                );
+                return row ;
+            }
+        });
         //button
         Button saveButton = new Button("Lagre");
         saveButton.setOnAction((ActionEvent e) -> {
