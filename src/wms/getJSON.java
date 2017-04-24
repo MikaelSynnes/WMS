@@ -1,5 +1,8 @@
 package wms;
 
+import database.Customer;
+import database.Order;
+import database.Product;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -23,73 +26,81 @@ import java.util.HashMap;
  * @author Mikael
  */
 public class getJSON {
-    public getJSON(){
-             mapper = new ObjectMapper();
-            }
+
+    public getJSON() {
+        mapper = new ObjectMapper();
+    }
 
     private static ObjectMapper mapper;
 
-  //  public static void main(String[] args) throws Exception {
-     
-/*
-        ArrayList<OrderLine> line = new ArrayList<>();
-        line.add(new OrderLine(1, 1, 1, 1));
-        Order order = new Order();
-        order.setCustomerID(1);
-        order.setEmployeeID(1);
-        order.setOrderID(1);
-        order.setInvoiceDate("invoiceDate");
-        order.setPlacedDate("placedDate");
-        order.setOrderLines(line);
-
-        try {
-            System.out.println(mapper.writeValueAsString(order));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-       ArrayList<Order> or= getAllOrders();
-       for(Order y:or){
-           System.out.println(y.getOrderID());
-       }
-*/
-
-  //  }
-
+      public static void main(String[] args) throws Exception {
+           mapper = new ObjectMapper();
+          System.out.println(getProduct(1).getName());
+          
+   }
     public static ArrayList<Order> getAllOrders() throws Exception {
         ArrayList<Order> orders = new ArrayList<>();
-        for (int i = 1; i < 100; i++) {
+        for (int i = 1; i < 30; i++) {
             Order o = getOrder(i);
             if (o != null) {
 
                 orders.add(o);
+            } else {
+               
             }
-            else if(i == 3 || i ==4){
 
-            }
-            else{
-                return orders;
-            }
- 
         }
         return orders;
     }
 
     public static Order getOrder(int i) throws Exception {
+
         try {
-        String fetchString = httpGet("http://kaysl-logix.uials.no:8080/orders/" + i);
-
-
+            String fetchString = httpGet("http://kaysl-logix.uials.no:8080/orders/" + i);
             Order ordre = mapper.readValue(fetchString, Order.class);
-          
+           
             return ordre;
 
-        }
-        catch (IOException ex) {
-             System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
             System.out.println("ERROR");
-        } 
+        }
         return null;
+    }
+    
+    public static Product getProduct(int id)throws Exception{
+         try {
+            String fetchString = httpGet("http://kaysl-logix.uials.no:8080/products/" + id);
+            
+           
+            Product customer = mapper.readValue(fetchString, Product.class);
+
+            return customer;
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("ERROR");
+        }
+        return null;
+        
+    }
+    public static Customer getCustomer(int id) throws Exception{
+        
+
+        try {
+            String fetchString = httpGet("http://kaysl-logix.uials.no:8080/customers/" + id);
+            
+           
+            Customer customer = mapper.readValue(fetchString, Customer.class);
+
+            return customer;
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("ERROR");
+        }
+        return null;
+    
     }
 
     public void addOrder() throws Exception {
@@ -124,7 +135,7 @@ public class getJSON {
             response.append(input);
         }
         in.close();
-       
+
         return response.toString();
     }
 
