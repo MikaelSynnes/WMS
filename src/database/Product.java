@@ -27,4 +27,60 @@ public class Product {
     Map tax;
     boolean active;
     String version;
+
+    public double getProductID() {
+        return productID;
+    }
+
+    public void setProductID(double productID) {
+        this.productID = productID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public Map getTax() {
+        return tax;
+    }
+
+    public void setTax(Map tax) {
+        this.tax = tax;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }

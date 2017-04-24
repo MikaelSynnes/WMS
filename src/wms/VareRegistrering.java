@@ -35,21 +35,21 @@ import javafx.util.Callback;
  * @author Kristian
  */
 public class VareRegistrering {
-    private final TableView<Order> table ;
-    private final ObservableList<Order> data ;
+    private final TableView<Ordre> table ;
+    private final ObservableList<Ordre> data ;
  
     private WMSConnection con;
     private final HBox hb;
     private static getJSON erp;
 
     private final HBox hbh;
-    private final ArrayList<Order> ordrer;
+    private final ArrayList<Ordre> ordrer;
 
     public VareRegistrering() throws Exception {
         getJSON erp = new getJSON();
         ordrer = new ArrayList<>();
         for (Order ord : erp.getAllOrders()) {
-            int id=ord.getCustomerID();
+            int id = ord.getCustomerID();
 
             ordrer.add(new Ordre(ord.getOrderID(),erp.getCustomer(id).getName(),null,ord.getPlacedDate(),null,ord.getEmployeeID()));
 
@@ -92,10 +92,10 @@ public class VareRegistrering {
 
         table.getColumns().addAll(ordreNummer, kunde, vekt, dato, antall, plassering);
 
-        table.setRowFactory(new Callback<TableView<Order>, TableRow<Order>>() {
+        table.setRowFactory(new Callback<TableView<Ordre>, TableRow<Ordre>>() {
             @Override
-            public TableRow<Order> call(TableView<Order> tableView) {
-                final TableRow<Order> row = new TableRow<>();
+            public TableRow<Ordre> call(TableView<Ordre> tableView) {
+                final TableRow<Ordre> row = new TableRow<>();
                 final ContextMenu contextMenu = new ContextMenu();
                 final MenuItem removeMenuItem = new MenuItem("Slett");
                 final MenuItem newWindow = new MenuItem("Åpne");
@@ -127,6 +127,7 @@ public class VareRegistrering {
                 return row ;
             }
         });
+
         //button
         Button saveButton = new Button("Lagre");
         saveButton.setOnAction((ActionEvent e) -> {
