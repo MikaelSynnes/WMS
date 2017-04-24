@@ -24,6 +24,8 @@ public class Order {
     private String invoiceDate;
     private int quantity;
     private ArrayList<OrderLine> orderLines;
+    private boolean active;
+
 
     public void setOrderID(int i) {
         orderID = i;
@@ -33,6 +35,16 @@ public class Order {
         i = orderLines.stream().map((_item) -> 1).reduce(i, Integer::sum);
        quantity=i;
     }
+
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public void setOrderLines(ArrayList i){
         orderLines=i;
     }
