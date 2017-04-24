@@ -88,7 +88,7 @@ public class AnsattOversikt
         TableColumn ansattNrCol = new TableColumn("Ansattnr");
         ansattNrCol.setMinWidth(100);
         ansattNrCol.setCellValueFactory(
-                new PropertyValueFactory<Ansatt, String>("AnsattID"));
+                new PropertyValueFactory<Ansatt, String>("AnsattId"));
         ansattNrCol.setCellFactory(cellFactory);
         ansattNrCol.setOnEditCommit(
                 new EventHandler<CellEditEvent<Ansatt, String>>()

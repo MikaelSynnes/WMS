@@ -45,7 +45,7 @@ public class OrderTable {
         TableColumn kunde = setTableColumn("KundeNr", 100, "customerID");
         TableColumn vekt = setTableColumn("AnsattNr", 100, "employeeID");
         TableColumn dato = setTableColumn("Laget Dato", 100, "placedDate");
-        TableColumn antall = setTableColumn("Sent Dato", 100, "antall");
+        TableColumn antall = setTableColumn("Sendt Dato", 100, "antall");
         TableColumn plassering = setTableColumn("Antall Varer", 100, "quantity");
 
 
