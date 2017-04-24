@@ -2,6 +2,7 @@ package wms;
 
 import database.Customer;
 import database.Order;
+import database.Product;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -34,7 +35,7 @@ public class getJSON {
 
       public static void main(String[] args) throws Exception {
            mapper = new ObjectMapper();
-          System.out.println(getCustomer(1).getAddress());
+          System.out.println(getProduct(1).getName());
           
    }
     public static ArrayList<Order> getAllOrders() throws Exception {
@@ -67,7 +68,22 @@ public class getJSON {
         return null;
     }
     
-    
+    public static Product getProduct(int id)throws Exception{
+         try {
+            String fetchString = httpGet("http://kaysl-logix.uials.no:8080/products/" + id);
+            
+           
+            Product customer = mapper.readValue(fetchString, Product.class);
+
+            return customer;
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("ERROR");
+        }
+        return null;
+        
+    }
     public static Customer getCustomer(int id) throws Exception{
         
 
